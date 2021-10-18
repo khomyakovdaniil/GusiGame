@@ -16,29 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gck-II-Bya">
-                                <rect key="frame" x="129" y="118" width="111" height="128"/>
+                            <view tag="4" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1tf-N8-kdu">
+                                <rect key="frame" x="881" y="118" width="111" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Gu" translatesAutoresizingMaskIntoConstraints="NO" id="Kcj-Wb-NgH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJt-fY-nct">
                                         <rect key="frame" x="0.0" y="0.0" width="111" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.25076639443846188" green="0.37023459995074659" blue="0.86087566614151001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="bSb-00-47e" appends="YES" id="KKm-pc-Rvb"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1tf-N8-kdu">
-                                <rect key="frame" x="718" y="118" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sa" translatesAutoresizingMaskIntoConstraints="NO" id="Ssu-4Z-8a6">
-                                        <rect key="frame" x="0.0" y="0.0" width="111" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
+                                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                        <color key="tintColor" systemColor="systemPurpleColor"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Са">
+                                                <attributes>
+                                                    <font key="NSFont" size="55" name="PTSerif-Caption"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
@@ -46,29 +42,24 @@
                                     <outletCollection property="gestureRecognizers" destination="3co-iI-L7I" appends="YES" id="lXe-v4-zMt"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Po-UQ-Kan">
-                                <rect key="frame" x="129" y="479" width="111" height="128"/>
+                            <view tag="2" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7CA-wb-GlG">
+                                <rect key="frame" x="882" y="600" width="110" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Li" translatesAutoresizingMaskIntoConstraints="NO" id="D52-od-RlG">
-                                        <rect key="frame" x="0.0" y="0.0" width="111" height="128"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61t-1l-4Sd">
+                                        <rect key="frame" x="-1" y="-4" width="111" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="pC6-4o-Nav" appends="YES" id="LNu-TM-fRI"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7CA-wb-GlG">
-                                <rect key="frame" x="718" y="479" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Si" translatesAutoresizingMaskIntoConstraints="NO" id="g7Q-Hn-DOm">
-                                        <rect key="frame" x="0.0" y="0.0" width="111" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
+                                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Си">
+                                                <attributes>
+                                                    <font key="NSFont" size="55" name="PTSerif-Caption"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
@@ -76,10 +67,99 @@
                                     <outletCollection property="gestureRecognizers" destination="nVR-WV-IsR" appends="YES" id="wxt-9f-VUu"/>
                                 </connections>
                             </view>
+                            <view tag="3" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Po-UQ-Kan">
+                                <rect key="frame" x="100" y="600" width="110" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqz-LL-HMs">
+                                        <rect key="frame" x="-1" y="-4" width="111" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Ли">
+                                                <attributes>
+                                                    <font key="NSFont" size="55" name="PTSerif-Caption"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pC6-4o-Nav" appends="YES" id="LNu-TM-fRI"/>
+                                </connections>
+                            </view>
+                            <view tag="1" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gck-II-Bya">
+                                <rect key="frame" x="100" y="118" width="111" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVq-6i-opC">
+                                        <rect key="frame" x="0.0" y="0.0" width="111" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Гу">
+                                                <attributes>
+                                                    <font key="NSFont" size="55" name="PTSerif-Caption"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25076639443846188" green="0.37023459995074659" blue="0.86087566614151001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="bSb-00-47e" appends="YES" id="KKm-pc-Rvb"/>
+                                </connections>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajw-BA-XSh">
+                                <rect key="frame" x="321" y="290" width="126" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geV-Tz-MWw">
+                                <rect key="frame" x="633" y="290" width="126" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPq-0l-VxP">
+                                <rect key="frame" x="467" y="482" width="146" height="165"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <state key="normal" title="Проверить">
+                                    <color key="titleColor" systemColor="linkColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="CheckButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cEm-ex-rhL"/>
+                                </connections>
+                            </button>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Gusi" translatesAutoresizingMaskIntoConstraints="NO" id="vHZ-bP-37T" userLabel="gusi image">
+                                <rect key="frame" x="396" y="20" width="289" height="226"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Lisa" translatesAutoresizingMaskIntoConstraints="NO" id="QXo-9M-IAk" userLabel="lisa image">
+                                <rect key="frame" x="396" y="20" width="289" height="226"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="gu1" destination="Gck-II-Bya" id="0Ot-s2-9Ns"/>
+                        <outlet property="gusiImage" destination="vHZ-bP-37T" id="MKp-qE-gz4"/>
+                        <outlet property="li3" destination="8Po-UQ-Kan" id="CiL-fv-Zc6"/>
+                        <outlet property="lisaImage" destination="QXo-9M-IAk" id="vOq-cI-Qpj"/>
+                        <outlet property="sa4" destination="1tf-N8-kdu" id="Yfx-Gl-hmm"/>
+                        <outlet property="si2" destination="7CA-wb-GlG" id="Mx1-Ou-SAy"/>
+                        <outlet property="slot" destination="ajw-BA-XSh" id="SmB-Gc-7yF"/>
+                        <outlet property="slot2" destination="geV-Tz-MWw" id="gev-8N-aN9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="pC6-4o-Nav">
@@ -107,12 +187,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Gu" width="549" height="716"/>
-        <image name="Li" width="549" height="716"/>
-        <image name="Sa" width="549" height="716"/>
-        <image name="Si" width="549" height="716"/>
+        <image name="Gusi" width="1100" height="717"/>
+        <image name="Lisa" width="1100" height="717"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

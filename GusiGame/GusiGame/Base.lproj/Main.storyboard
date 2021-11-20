@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad10_2" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <device id="retina5_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,13 +12,13 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GusiGame" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
+                    <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view tag="1" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JfP-0r-ama" userLabel="LeftSyllable1" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="20" y="30" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="50" y="30" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -26,8 +26,8 @@
                                 </connections>
                             </view>
                             <view tag="2" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDZ-JP-U77" userLabel="LeftSyllable2" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="20" y="186" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="50" y="114" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -35,8 +35,8 @@
                                 </connections>
                             </view>
                             <view tag="3" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UBZ-Bu-eq7" userLabel="LeftSyllable3" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="183" y="186" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="50" y="187" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -44,8 +44,8 @@
                                 </connections>
                             </view>
                             <view tag="4" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PZl-27-Ggf" userLabel="LeftSyllable4" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="20" y="341" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="50" y="255" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -53,8 +53,8 @@
                                 </connections>
                             </view>
                             <view tag="5" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CcT-0o-nnu" userLabel="LeftSyllable5" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="183" y="341" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="50" y="323" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -62,8 +62,8 @@
                                 </connections>
                             </view>
                             <view tag="6" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fSW-c0-aTl" userLabel="LeftSyllable6" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="20" y="482" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="151" y="30" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -71,8 +71,8 @@
                                 </connections>
                             </view>
                             <view tag="7" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IM2-y8-ec5" userLabel="LeftSyllable7" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="183" y="482" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="151" y="114" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -80,111 +80,144 @@
                                 </connections>
                             </view>
                             <view tag="8" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gck-II-Bya" userLabel="LeftSyllable8" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="20" y="632" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="151" y="187" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639443846188" green="0.37023459995074659" blue="0.86087566614151001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="rZc-XF-WDS" appends="YES" id="6bO-EN-qcb"/>
                                 </connections>
                             </view>
-                            <view tag="9" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Po-UQ-Kan" userLabel="LeftSyllable9" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="183" y="636" width="110" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <view tag="9" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Po-UQ-Kan" userLabel="LeftSyllable9" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="151" y="255" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="noV-Du-GGu" appends="YES" id="SID-8E-txX"/>
                                 </connections>
                             </view>
-                            <view tag="10" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7CA-wb-GlG" userLabel="RightSyllable1" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="781" y="38" width="111" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view tag="10" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yVt-x0-FVu" userLabel="LeftSyllable10" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="151" y="323" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="OvF-UV-p6s" appends="YES" id="jOk-QR-7tg"/>
+                                </connections>
+                            </view>
+                            <view tag="11" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7CA-wb-GlG" userLabel="RightSyllable1" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="652" y="30" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="dvk-qD-XOa" appends="YES" id="71m-E4-xRg"/>
                                 </connections>
                             </view>
-                            <view tag="11" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1tf-N8-kdu" userLabel="RightSyllable2" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="781" y="186" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view tag="12" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1tf-N8-kdu" userLabel="RightSyllable2" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="652" y="114" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="8gR-xD-1YO" appends="YES" id="rOL-UF-tHT"/>
                                 </connections>
                             </view>
-                            <view tag="13" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gyp-gV-86F" userLabel="RightSyllable4" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="781" y="341" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view tag="13" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y1c-pH-xKf" userLabel="RightSyllable3" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="652" y="187" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Dan-4Q-fjN" appends="YES" id="98p-Y6-KIg"/>
+                                </connections>
+                            </view>
+                            <view tag="14" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gyp-gV-86F" userLabel="RightSyllable4" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="652" y="255" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Xz3-MA-ZgQ" appends="YES" id="1WY-si-Cs2"/>
                                 </connections>
                             </view>
-                            <view tag="14" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRR-7X-9GV" userLabel="RightSyllable5" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="932" y="341" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view tag="15" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRR-7X-9GV" userLabel="RightSyllable5" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="652" y="323" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="121-Dj-LdD" appends="YES" id="1Fs-q1-HKN"/>
                                 </connections>
                             </view>
-                            <view tag="15" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eID-qf-kh8" userLabel="RightSyllable6" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="781" y="482" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view tag="16" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eID-qf-kh8" userLabel="RightSyllable6" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="565" y="30" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="MZm-A4-P9L" appends="YES" id="gKy-QH-GYK"/>
                                 </connections>
                             </view>
-                            <view tag="16" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uHN-rZ-cZB" userLabel="RightSyllable7" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="932" y="482" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view tag="17" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uHN-rZ-cZB" userLabel="RightSyllable7" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="565" y="114" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="HNu-LT-nc7" appends="YES" id="vRY-7e-lty"/>
                                 </connections>
                             </view>
-                            <view tag="17" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iet-FX-1I5" userLabel="RightSyllable8" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="781" y="628" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view tag="18" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iet-FX-1I5" userLabel="RightSyllable8" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="565" y="187" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="CE3-ng-29J" appends="YES" id="vmQ-5c-Lij"/>
                                 </connections>
                             </view>
-                            <view tag="18" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xK5-Ns-3B0" userLabel="RightSyllable9" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="932" y="628" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view tag="19" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xK5-Ns-3B0" userLabel="RightSyllable9" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="565" y="255" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="fXR-wD-3Fb" appends="YES" id="Doc-9i-XbQ"/>
                                 </connections>
                             </view>
+                            <view tag="20" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cuQ-DY-zrQ" userLabel="RightSyllable10" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
+                                <rect key="frame" x="565" y="323" width="45" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Rms-ss-AqK" appends="YES" id="XvS-2w-nYs"/>
+                                </connections>
+                            </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajw-BA-XSh">
-                                <rect key="frame" x="321" y="290" width="126" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="258" y="187" width="50" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geV-Tz-MWw">
-                                <rect key="frame" x="633" y="290" width="126" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="428" y="188" width="50" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Gusi" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5t-fr-NwD">
+                                <rect key="frame" x="258" y="30" width="220" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPq-0l-VxP">
-                                <rect key="frame" x="467" y="482" width="146" height="165"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="338" y="279" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                 </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                 <state key="normal" title="Проверить">
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
@@ -192,28 +225,14 @@
                                     <action selector="CheckButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cEm-ex-rhL"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Gusi" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5t-fr-NwD">
-                                <rect key="frame" x="380" y="85" width="321" height="195"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                            </imageView>
-                            <view tag="12" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y1c-pH-xKf" userLabel="RightSyllable3" customClass="SyllableView" customModule="GusiGame" customModuleProvider="target">
-                                <rect key="frame" x="932" y="186" width="111" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.25076639439999998" green="0.37023460000000002" blue="0.86087566609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Dan-4Q-fjN" appends="YES" id="98p-Y6-KIg"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="resultImage" destination="F5t-fr-NwD" id="wrU-tq-NQ7"/>
-                        <outlet property="slot" destination="ajw-BA-XSh" id="SmB-Gc-7yF"/>
-                        <outlet property="slot2" destination="geV-Tz-MWw" id="gev-8N-aN9"/>
+                        <outlet property="slot" destination="ajw-BA-XSh" id="2TH-dm-h6t"/>
+                        <outlet property="slot2" destination="geV-Tz-MWw" id="g3n-K2-mAu"/>
                         <outletCollection property="leftSyllables" destination="JfP-0r-ama" collectionClass="NSMutableArray" id="7pR-bm-zo3"/>
                         <outletCollection property="leftSyllables" destination="zDZ-JP-U77" collectionClass="NSMutableArray" id="7JW-bF-3gX"/>
                         <outletCollection property="leftSyllables" destination="UBZ-Bu-eq7" collectionClass="NSMutableArray" id="JrO-fJ-e13"/>
@@ -232,6 +251,8 @@
                         <outletCollection property="rightSyllables" destination="uHN-rZ-cZB" collectionClass="NSMutableArray" id="UKe-E7-n7K"/>
                         <outletCollection property="rightSyllables" destination="Iet-FX-1I5" collectionClass="NSMutableArray" id="bme-iy-9Gh"/>
                         <outletCollection property="rightSyllables" destination="xK5-Ns-3B0" collectionClass="NSMutableArray" id="A8n-bj-HEk"/>
+                        <outletCollection property="leftSyllables" destination="yVt-x0-FVu" collectionClass="NSMutableArray" id="fv4-Ga-hMu"/>
+                        <outletCollection property="rightSyllables" destination="cuQ-DY-zrQ" collectionClass="NSMutableArray" id="AzE-7M-HZN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -280,6 +301,11 @@
                         <action selector="panPiece:" destination="BYZ-38-t0r" id="die-mp-rP1"/>
                     </connections>
                 </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="OvF-UV-p6s">
+                    <connections>
+                        <action selector="panPiece:" destination="BYZ-38-t0r" id="MOa-aY-0SH"/>
+                    </connections>
+                </panGestureRecognizer>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="dvk-qD-XOa">
                     <connections>
                         <action selector="panPiece:" destination="BYZ-38-t0r" id="qCF-6d-cqH"/>
@@ -325,8 +351,13 @@
                         <action selector="panPiece:" destination="BYZ-38-t0r" id="7KT-w3-C99"/>
                     </connections>
                 </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Rms-ss-AqK">
+                    <connections>
+                        <action selector="panPiece:" destination="BYZ-38-t0r" id="R9o-q2-hrx"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="20" y="80"/>
+            <point key="canvasLocation" x="19.565217391304348" y="79.710144927536234"/>
         </scene>
     </scenes>
     <resources>

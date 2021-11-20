@@ -11,8 +11,7 @@ class SyllableView: UIView {
 
     @IBOutlet weak var title: UILabel!
     
-    
-
+    var left: Bool?
     var view: UIView!
     var nibName: String = "SyllableView"
     
@@ -36,15 +35,16 @@ class SyllableView: UIView {
         view = loadFromNib()
         view.frame = bounds
         view.backgroundColor = leftSyllable ? UIColor.systemGreen : UIColor.systemBlue
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = true
         
+        self.left = leftSyllable
         self.title.text = text
-        self.title.font = UIFont.systemFont(ofSize: 80)
+        self.title.font = UIFont.systemFont(ofSize: 30)
         self.title.adjustsFontSizeToFitWidth = true
         
         addSubview(view)
-        view.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        //view.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        //view.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
     /*
     // Only override draw() if you perform custom drawing.

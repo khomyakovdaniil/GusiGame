@@ -17,9 +17,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var resultImage: UIImageView! // Result Image
     
-    // @IBOutlet weak var checkButton // - FIXME сделать обращение к тексту кнопки для вывода значения полученного с сервера
+    @IBOutlet weak var checkButton: UIButton! // - FIXME сделать обращение к тексту кнопки для вывода значения полученного с сервера
     
     private let dataManager: DataManager = MyDataManager()
+    private let webRequest: WebRequest = MyWebRequest()
     
     var originalCenters = [CGPoint()]// The original position of each card
     
@@ -126,11 +127,11 @@ class ViewController: UIViewController {
         }
         
     }
-    @IBAction func CheckButton(_ sender: UIButton) { // - FIXME переименовать по действию Checks the slots, displays image, destroys cards
+    @IBAction func SlotsChecked(_ sender: UIButton) { // - FIXME переименовать по действию Checks the slots, displays image, destroys cards
         
         var checkCounter = 1
         var resultWordIndex = 0
-        requestMeaningFromWeb(word: leftSlot+rightSlot)
+        var meaning = webRequest.getMeaning(word: leftSlot+rightSlot)
         
         words.enumerated().forEach {(indexOfWord, word) in
             checkCounter += 1
@@ -147,37 +148,19 @@ class ViewController: UIViewController {
                 checkCounter = 0
                 resultWordIndex = indexOfWord
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // ~FIXME переделать эту дичь
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // ~FIXME переделать эту дичь
                 if checkCounter > self.words.count {
                     sender.setTitle("Неправильно", for: .normal)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         sender.setTitle("Проверить", for: .normal)
                     }
-                } else {  sender.setTitle(self.meaning, for: .normal)
+                } else {  sender.setTitle(meaning, for: .normal)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                         sender.setTitle("Проверить", for: .normal)
                     }
                 }
             }
         }
-        
-        func requestMeaningFromWeb(word: String){
-            var word = word
-            let searchWord = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-            let urlString =  "https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20211105T174310Z.cb74ff4cbc3d14c3.e5957bf9a12beffb3d9cf0bfec4639c57da4c431&lang=ru-ru&text=" + searchWord
-            let request = URLRequest(url: URL(string: urlString)!)
-            let task = URLSession.shared.dataTask(with: request) { (data, responce, error) in
-                do {
-                    let wordDataFromWeb = try JSONDecoder().decode(WebWord.self, from: data!)
-                    self.meaning = wordDataFromWeb.def[0].tr[0].text ?? "i"
-                    print(self.meaning + "23")
-                } catch let error {
-                    print(error)
-                }
-            
-            }
-            task.resume()
-    }
 }
 }
 

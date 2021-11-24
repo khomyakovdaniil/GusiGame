@@ -222,7 +222,7 @@
                                     <color key="titleColor" systemColor="linkColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="CheckButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cEm-ex-rhL"/>
+                                    <action selector="SlotsChecked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ALo-hk-PQv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -230,6 +230,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="checkButton" destination="zPq-0l-VxP" id="od6-B0-sYn"/>
                         <outlet property="resultImage" destination="F5t-fr-NwD" id="wrU-tq-NQ7"/>
                         <outlet property="slot" destination="ajw-BA-XSh" id="2TH-dm-h6t"/>
                         <outlet property="slot2" destination="geV-Tz-MWw" id="g3n-K2-mAu"/>

@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 protocol WebRequest {
-    func getMeaning(word: String) -> String
+    func getMeaning(word: String, onComplete: @escaping (String) -> Void)
 }
 
 class MyWebRequest: WebRequest {
-    func getMeaning(word: String) -> String {
+    func getMeaning(word: String, onComplete: @escaping (String) -> Void) {
         let mySerialQueue = DispatchQueue.global(qos: .utility)
-        var word = word
+        let word = word
         var meaning = "x"
         print("раз")
         let searchWord = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
@@ -26,6 +26,9 @@ class MyWebRequest: WebRequest {
             do {
                 let wordDataFromWeb = try JSONDecoder().decode(WebWord.self, from: data!)
                 meaning = wordDataFromWeb.def[0].tr[0].text
+                DispatchQueue.main.async {
+                    onComplete(meaning)
+                }
                 print(meaning + "get")
                 print("два")
             } catch let error {
@@ -35,7 +38,6 @@ class MyWebRequest: WebRequest {
         }
         print(meaning + "set")
         print("три")
-        return meaning
     }
 }
 

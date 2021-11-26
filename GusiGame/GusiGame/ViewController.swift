@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     var initialCenter = CGPoint()  // The initial center point of the view for movement
     
     var meaning: String = " "
-
+    
     lazy var words: [Word] = dataManager.getList()
     
     override func viewDidLoad() {
@@ -131,37 +131,38 @@ class ViewController: UIViewController {
         
         var checkCounter = 1
         var resultWordIndex = 0
-        var meaning = webRequest.getMeaning(word: leftSlot+rightSlot)
-        
-        words.enumerated().forEach {(indexOfWord, word) in
-            checkCounter += 1
-            if leftSlot + rightSlot == word.fullWord {
-                self.resultImage.image = word.image
-                self.resultImage.isHidden = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.resultImage.isHidden = true
-                }
-                leftSlot = ""
-                rightSlot = ""
-                leftSyllables[indexOfWord].removeFromSuperview()
-                rightSyllables[indexOfWord].removeFromSuperview()
-                checkCounter = 0
-                resultWordIndex = indexOfWord
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // ~FIXME переделать эту дичь
-                if checkCounter > self.words.count {
-                    sender.setTitle("Неправильно", for: .normal)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        sender.setTitle("Проверить", for: .normal)
+        webRequest.getMeaning(word: leftSlot+rightSlot) {[weak self] meaning in
+            guard let strongSelf = self else { return }
+            strongSelf.words.enumerated().forEach {(indexOfWord, word) in
+                checkCounter += 1
+                if strongSelf.leftSlot + strongSelf.rightSlot == word.fullWord {
+                    strongSelf.resultImage.image = word.image
+                    strongSelf.resultImage.isHidden = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        strongSelf.resultImage.isHidden = true
                     }
-                } else {  sender.setTitle(meaning, for: .normal)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        sender.setTitle("Проверить", for: .normal)
+                    strongSelf.leftSlot = ""
+                    strongSelf.rightSlot = ""
+                    strongSelf.leftSyllables[indexOfWord].removeFromSuperview()
+                    strongSelf.rightSyllables[indexOfWord].removeFromSuperview()
+                    checkCounter = 0
+                    resultWordIndex = indexOfWord
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // ~FIXME переделать эту дичь
+                    if checkCounter > strongSelf.words.count {
+                        sender.setTitle("Неправильно", for: .normal)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            sender.setTitle("Проверить", for: .normal)
+                        }
+                    } else {  sender.setTitle(meaning, for: .normal)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            sender.setTitle("Проверить", for: .normal)
+                        }
                     }
                 }
             }
         }
-}
+    }
 }
 
 

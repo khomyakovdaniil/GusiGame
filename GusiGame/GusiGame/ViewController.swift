@@ -9,8 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var leftSyllablesCollectionView: UICollectionView!
     @IBOutlet var leftSyllables: [SyllableView]!
     @IBOutlet var rightSyllables: [SyllableView]!// Cards with syllables
+
     
     @IBOutlet weak var slot: UIView!
     @IBOutlet weak var slot2: UIView! // Slots
@@ -32,16 +34,21 @@ class ViewController: UIViewController {
 
     lazy var words: [Word] = dataManager.getList()
     
+    private let cellID = "SyllableCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        let bundle = Bundle.main
+        let cellNib = UINib(nibName: "SyllableCell", bundle: bundle)
+        leftSyllablesCollectionView.register(cellNib, forCellWithReuseIdentifier: cellID)
+        leftSyllablesCollectionView.dataSource = self
         
         resultImage.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        leftSyllables.enumerated().forEach {(indexOfSyllable, syllable) in
+        
+                leftSyllables.enumerated().forEach {(indexOfSyllable, syllable) in
             if indexOfSyllable < words.count {
                 syllable.setup(text: words[indexOfSyllable].leftSyllable, leftSyllable: true)
                 originalCenters.append(syllable.center)
@@ -181,4 +188,14 @@ class ViewController: UIViewController {
 }
 }
 
-
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        words.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = leftSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
+        cell.syllableLabel.text = words[indexPath.item].leftSyllable
+        return cell
+    }
+}

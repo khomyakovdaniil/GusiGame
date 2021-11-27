@@ -35,7 +35,7 @@ class SyllableView: UIView {
         view = loadFromNib()
         view.frame = bounds
         view.backgroundColor = leftSyllable ? UIColor.systemGreen : UIColor.systemBlue
-        view.translatesAutoresizingMaskIntoConstraints = true
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         self.left = leftSyllable
         self.title.text = text

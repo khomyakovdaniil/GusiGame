@@ -14,5 +14,5 @@ class SyllableCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    var left: Bool?
 }

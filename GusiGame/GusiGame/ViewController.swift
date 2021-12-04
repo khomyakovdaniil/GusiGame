@@ -9,8 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var leftSyllablesCollectionView: UICollectionView!
     @IBOutlet var leftSyllables: [SyllableView]!
     @IBOutlet var rightSyllables: [SyllableView]!// Cards with syllables
+    
     
     @IBOutlet weak var slot: UIView!
     @IBOutlet weak var slot2: UIView! // Slots
@@ -29,25 +31,99 @@ class ViewController: UIViewController {
     var initialCenter = CGPoint()  // The initial center point of the view for movement
     
     var meaning: String = " "
-
+    
     lazy var words: [Word] = dataManager.getList()
+    
+    private let cellID = "SyllableCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let bundle = Bundle.main
+        let cellNib = UINib(nibName: "SyllableCell", bundle: bundle)
+        leftSyllablesCollectionView.register(cellNib, forCellWithReuseIdentifier: cellID)
+        leftSyllablesCollectionView.dataSource = self
+        leftSyllablesCollectionView.delegate = self
+        leftSyllablesCollectionView.clipsToBounds = false
         
         
         
         resultImage.isHidden = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        leftSyllables.enumerated().forEach {(indexOfSyllable, syllable) in
-            if indexOfSyllable < words.count {
-                syllable.setup(text: words[indexOfSyllable].leftSyllable, leftSyllable: true)
-                originalCenters.append(syllable.center)
+    @objc func handleLongGesture(gestureRecognizer: UIPanGestureRecognizer) {
+        guard gestureRecognizer.view != nil else {return}
+        
+        let piece = gestureRecognizer.view! as! SyllableCell
+        
+        let label = piece.syllableLabel!
+        
+        var indexOfPiece: Int {
+            var index = 0
+            if piece.left! {
+                words.enumerated().forEach {(indexOfWord, word) in
+                    if word.leftSyllable == label.text {
+                        index = indexOfWord + 1
+                    }
+                }
             } else {
-                leftSyllables[indexOfSyllable].removeFromSuperview()
+                words.enumerated().forEach {(indexOfWord, word) in
+                    if word.rightSyllable == label.text {
+                        index = indexOfWord + words.count + 1
+                    }
+                }
             }
+            return index
+        }
+        
+        
+        
+        if gestureRecognizer.state == .began {
+            self.initialCenter = piece.center
+        }// Save the view's original position
+        
+        
+        if gestureRecognizer.state == .changed {
+            let translation = gestureRecognizer.translation(in: piece.superview)
+            let newCenter = CGPoint(x: initialCenter.x + translation.x, y: initialCenter.y + translation.y)
+            piece.center = newCenter
+            // Add the X and Y translation to the view's original position.
+        }
+        
+        if gestureRecognizer.state != .began && gestureRecognizer.state != .changed {
+            
+            if slot.frame.contains(piece.center){
+                leftSyllables.enumerated().forEach {(index, syllable) in
+                    if syllable.center == slot.center {
+                        syllable.center = originalCenters[index+1]
+                    }
+                }
+                leftSlot = piece.syllableLabel.text!
+                piece.center = slot.center
+            } else if slot2.frame.contains(piece.center){
+                rightSyllables.enumerated().forEach {(index, syllable) in
+                    if syllable.center == slot2.center {
+                        syllable.center = originalCenters[index+1+words.count]
+                    }
+                }
+                rightSlot = piece.syllableLabel.text!
+                piece.center = slot2.center
+            } else {
+                piece.center = originalCenters[indexOfPiece]
+            }//Saves cards syllable to the slot
+            
+            //     if ((abs(piece.center.x-slot.center.x)<50 && abs(piece.center.y-slot.center.y)<50) || (abs(piece.center.x-slot2.center.x)<50 && abs(piece.center.y-slot2.center.y)<50)) == false {
+            //         piece.center = originalCenters[indexOfPiece]
+            //      } // On the end of movement return the card to its original location, if it was not moved into the slot
+        }
+        
+    }
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        leftSyllablesCollectionView.subviews.enumerated().forEach {(indexOfSyllable, syllable) in
+                originalCenters.append(syllable.center)
         }
         rightSyllables.enumerated().forEach {(indexOfSyllable, syllable) in
             if indexOfSyllable < words.count {
@@ -101,7 +177,7 @@ class ViewController: UIViewController {
         if gestureRecognizer.state != .began && gestureRecognizer.state != .changed {
             
             if slot.frame.contains(piece.center){
-                leftSyllables.enumerated().forEach {(index, syllable) in
+                leftSyllablesCollectionView.subviews.enumerated().forEach {(index, syllable) in
                     if syllable.center == slot.center {
                         syllable.center = originalCenters[index+1]
                     }
@@ -174,11 +250,29 @@ class ViewController: UIViewController {
                 } catch let error {
                     print(error)
                 }
-            
+                
             }
             task.resume()
+        }
     }
 }
-}
 
+
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        words.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = leftSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
+        cell.syllableLabel.text = words[indexPath.item].leftSyllable
+        cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gestureRecognizer:))))
+        cell.left = true
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+}
 

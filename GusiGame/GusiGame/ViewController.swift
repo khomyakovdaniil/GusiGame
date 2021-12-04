@@ -36,12 +36,18 @@ class ViewController: UIViewController {
     
     private let cellID = "SyllableCell"
     
+    class LeftSyllablesCollectionViewLayout: UICollectionViewLayout {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let bundle = Bundle.main
         let cellNib = UINib(nibName: "SyllableCell", bundle: bundle)
         leftSyllablesCollectionView.register(cellNib, forCellWithReuseIdentifier: cellID)
         leftSyllablesCollectionView.dataSource = self
+        leftSyllablesCollectionView.collectionViewLayout = LeftSyllablesCollectionViewLayout()
+    
         
         resultImage.isHidden = true
     }
@@ -187,6 +193,7 @@ class ViewController: UIViewController {
     }
 }
 }
+
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

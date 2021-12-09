@@ -52,7 +52,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wA7-Fc-Lri" secondAttribute="height" multiplier="245:414" id="LPL-9k-9bD"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rjV-6n-Fjs">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rjV-6n-Fjs">
                                     <size key="itemSize" width="79" height="77"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -76,7 +76,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="245" id="NQp-65-XVf"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="soi-xx-EDK">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="soi-xx-EDK">
                                     <size key="itemSize" width="184" height="416"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>

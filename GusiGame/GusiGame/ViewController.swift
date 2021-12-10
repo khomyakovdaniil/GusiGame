@@ -19,9 +19,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var resultImage: UIImageView! // Result Image
     
-    // @IBOutlet weak var checkButton // - FIXME сделать обращение к тексту кнопки для вывода значения полученного с сервера
+    @IBOutlet weak var checkButton: UIButton! // - FIXME сделать обращение к тексту кнопки для вывода значения полученного с сервера
     
     private let dataManager: DataManager = MyDataManager()
+    private let webRequest: WebRequest = MyWebRequest()
     
     var originalCentersLeft = [CGPoint()]// The original position of each card
     var originalCentersRight = [CGPoint()]// The original position of each card
@@ -130,7 +131,6 @@ class ViewController: UIViewController {
     }
     
     
-    
     override func viewDidAppear(_ animated: Bool) {
         
         leftSyllablesCollectionView.subviews.enumerated().forEach {(indexOfSyllable, syllable) in
@@ -142,103 +142,85 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func CheckButton(_ sender: UIButton) { // - FIXME переименовать по действию Checks the slots, displays image, destroys cards
+    @IBAction func SlotsChecked(_ sender: UIButton) { // - FIXME переименовать по действию Checks the slots, displays image, destroys cards
         
         var checkCounter = 1
         var resultWordIndex = 0
-        requestMeaningFromWeb(word: leftSlot+rightSlot)
-        
-        words.enumerated().forEach {(indexOfWord, word) in
-            checkCounter += 1
-            if leftSlot + rightSlot == word.fullWord {
-                self.resultImage.image = word.image
-                self.resultImage.isHidden = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.resultImage.isHidden = true
-                }
-                leftSlot = ""
-                rightSlot = ""
-                leftSyllablesCollectionView.subviews[indexOfWord].removeFromSuperview()
-                rightSyllablesCollectionView.subviews[indexOfWord].removeFromSuperview()
-                checkCounter = 0
-                resultWordIndex = indexOfWord
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // ~FIXME переделать эту дичь
-                if checkCounter > self.words.count {
-                    sender.setTitle("Неправильно", for: .normal)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        sender.setTitle("Проверить", for: .normal)
+        self.webRequest.getMeaning(word: self.leftSlot+self.rightSlot) {[weak self] meaning in
+            guard let strongSelf = self else { return }
+            strongSelf.words.enumerated().forEach {(indexOfWord, word) in
+                checkCounter += 1
+                if strongSelf.leftSlot + strongSelf.rightSlot == word.fullWord {
+                    strongSelf.resultImage.image = word.image
+                    strongSelf.resultImage.isHidden = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        strongSelf.resultImage.isHidden = true
                     }
-                } else {  sender.setTitle(self.meaning, for: .normal)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        sender.setTitle("Проверить", for: .normal)
+                    strongSelf.leftSlot = ""
+                    strongSelf.rightSlot = ""
+                    strongSelf.leftSyllablesCollectionView[indexOfWord].removeFromSuperview()
+                    strongSelf.rightSyllablesCollectionView[indexOfWord].removeFromSuperview()
+                    checkCounter = 0
+                    resultWordIndex = indexOfWord
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // ~FIXME переделать эту дичь
+                    if checkCounter > strongSelf.words.count {
+                        sender.setTitle("Неправильно", for: .normal)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            sender.setTitle("Проверить", for: .normal)
+                        }
+                    } else {  sender.setTitle(meaning, for: .normal)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            sender.setTitle("Проверить", for: .normal)
+                        }
                     }
                 }
             }
         }
+    }
+}
+    extension ViewController: UICollectionViewDataSource {
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            words.count
+        }
         
-        func requestMeaningFromWeb(word: String){
-            var word = word
-            let searchWord = word.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-            let urlString =  "https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20211105T174310Z.cb74ff4cbc3d14c3.e5957bf9a12beffb3d9cf0bfec4639c57da4c431&lang=ru-ru&text=" + searchWord
-            let request = URLRequest(url: URL(string: urlString)!)
-            let task = URLSession.shared.dataTask(with: request) { (data, responce, error) in
-                do {
-                    let wordDataFromWeb = try JSONDecoder().decode(WebWord.self, from: data!)
-                    self.meaning = wordDataFromWeb.def[0].tr[0].text ?? "i"
-                    print(self.meaning + "23")
-                } catch let error {
-                    print(error)
-                }
-                
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            if collectionView == self.leftSyllablesCollectionView {
+                guard let cell = leftSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
+                cell.syllableLabel.text = words[indexPath.item].leftSyllable
+                cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gestureRecognizer:))))
+                cell.left = true
+                return cell
+            } else {
+                guard let cell = rightSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
+                cell.syllableLabel.text = words[indexPath.item].rightSyllable
+                cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gestureRecognizer:))))
+                cell.left = false
+                return cell
             }
-            task.resume()
         }
     }
-}
 
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        words.count
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.leftSyllablesCollectionView {
-            guard let cell = leftSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
-            cell.syllableLabel.text = words[indexPath.item].leftSyllable
-            cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gestureRecognizer:))))
-            cell.left = true
-            return cell
-        } else {
-            guard let cell = rightSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
-            cell.syllableLabel.text = words[indexPath.item].rightSyllable
-            cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gestureRecognizer:))))
-            cell.left = false
-            return cell
+    extension ViewController: UICollectionViewDelegate  {
+        func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+            return true
         }
     }
-}
-
-extension ViewController: UICollectionViewDelegate  {
-    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-}
-extension ViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
-        return CGFloat(20)
+    extension ViewController: UICollectionViewDelegateFlowLayout {
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
+            return CGFloat(20)
+            
+        }
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            var insets = UIEdgeInsets(top: 20, left: 30, bottom: 30, right: 30)
+            return insets
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+            return CGSize(width: 60, height: 60)
+        }
+        
         
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        var insets = UIEdgeInsets(top: 20, left: 30, bottom: 30, right: 30)
-        return insets
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        return CGSize(width: 60, height: 60)
-    }
-    
-    
-}
-
 

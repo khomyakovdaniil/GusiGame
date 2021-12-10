@@ -18,6 +18,7 @@
 		5F8C3A9A2722B39100DF07C4 /* SyllableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C3A992722B39100DF07C4 /* SyllableView.swift */; };
 		5F8C3AA02722BD6E00DF07C4 /* SyllableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F8C3A9F2722BD6E00DF07C4 /* SyllableView.xib */; };
 		5F8C3AE2273992BB00DF07C4 /* WordWebStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C3AE1273992BB00DF07C4 /* WordWebStruct.swift */; };
+		5F8C3B04274E871500DF07C4 /* MyWebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C3B03274E871500DF07C4 /* MyWebRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		5F8C3A992722B39100DF07C4 /* SyllableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllableView.swift; sourceTree = "<group>"; };
 		5F8C3A9F2722BD6E00DF07C4 /* SyllableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyllableView.xib; sourceTree = "<group>"; };
 		5F8C3AE1273992BB00DF07C4 /* WordWebStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordWebStruct.swift; sourceTree = "<group>"; };
+		5F8C3B03274E871500DF07C4 /* MyWebRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWebRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				5F8C3A9F2722BD6E00DF07C4 /* SyllableView.xib */,
 				5F8C3AE1273992BB00DF07C4 /* WordWebStruct.swift */,
 				5F8C3A95271D86B900DF07C4 /* MyDataManager.swift */,
+				5F8C3B03274E871500DF07C4 /* MyWebRequest.swift */,
 				5F2D839B270844B6007D6921 /* AppDelegate.swift */,
 				5F2D839D270844B6007D6921 /* SceneDelegate.swift */,
 				5F2D839F270844B6007D6921 /* ViewController.swift */,
@@ -153,6 +156,7 @@
 			files = (
 				5F2D83A0270844B6007D6921 /* ViewController.swift in Sources */,
 				5F8C3AE2273992BB00DF07C4 /* WordWebStruct.swift in Sources */,
+				5F8C3B04274E871500DF07C4 /* MyWebRequest.swift in Sources */,
 				5F8C3A96271D86B900DF07C4 /* MyDataManager.swift in Sources */,
 				5F2D839C270844B6007D6921 /* AppDelegate.swift in Sources */,
 				5F6C46922752366E00EEDBA3 /* SyllableCell.swift in Sources */,

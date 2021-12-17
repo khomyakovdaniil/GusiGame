@@ -85,7 +85,8 @@ class ViewController: UIViewController {
     private var initialCenter = CGPoint()  // The initial center point of the view for movement
     
     private lazy var words: [Word] = dataManager.getList()
-    private lazy var shuffledWords = words.shuffled()
+    private lazy var leftSyllables: [String] = words.compactMap {$0.leftSyllable}
+    private lazy var rightSyllables: [String] = words.shuffled().compactMap {$0.rightSyllable}
     
     private var meaning: String = " "
     private var checkCounter = 0
@@ -104,11 +105,6 @@ class ViewController: UIViewController {
                 }
                 self.leftSlot = ""
                 self.rightSlot = ""
-                let indexForRightSyllable = self.indexForRightSyllable(leftSyllableIndex: indexOfWord)
-                self.words.remove(at: indexOfWord)
-                self.shuffledWords.remove(at: indexForRightSyllable)
-                self.rightSyllablesCollectionView.deleteItems(at: [IndexPath(item: indexForRightSyllable, section: 0)])
-                self.leftSyllablesCollectionView.deleteItems(at: [IndexPath(item: indexOfWord, section: 0)])
             }
         }
     }
@@ -125,16 +121,6 @@ class ViewController: UIViewController {
             }
         }
         self.checkCounter = 0
-    }
-    
-    private func indexForRightSyllable(leftSyllableIndex: Int) -> Int {
-        var newIndex = 0
-        shuffledWords.enumerated().forEach { (index, word) in
-            if words[leftSyllableIndex].rightSyllable == word.rightSyllable {
-                newIndex = index
-            }
-        }
-        return newIndex
     }
     
     @objc private func handlePanGesture(gestureRecognizer: UIPanGestureRecognizer) {
@@ -186,18 +172,23 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        words.count
+        if collectionView == self.leftSyllablesCollectionView {
+        return leftSyllables.count
+        } else {
+            return rightSyllables.count
+        }
+        
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.leftSyllablesCollectionView {
             guard let cell = leftSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
-            cell.syllableLabel.text = words[indexPath.item].leftSyllable
+            cell.syllableLabel.text = leftSyllables[indexPath.item]
             cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(gestureRecognizer:))))
             cell.left = true
             return cell
         } else {
             guard let cell = rightSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
-            cell.syllableLabel.text = shuffledWords[indexPath.item].rightSyllable
+            cell.syllableLabel.text = rightSyllables[indexPath.item]
             cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(gestureRecognizer:))))
             cell.left = false
             return cell

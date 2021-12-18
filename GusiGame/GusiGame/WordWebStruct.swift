@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct Translation: Codable {
     var text: String
 }

@@ -9,8 +9,12 @@ import UIKit
 
 class SlotView: UIView {
     
+    // MARK: - IBOutlets
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var slotLabel: UILabel!
+    
+    // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)

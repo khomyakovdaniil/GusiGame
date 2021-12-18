@@ -12,6 +12,7 @@ class SyllableCell: UICollectionViewCell {
     @IBOutlet weak var syllableLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        syllableLabel.adjustsFontSizeToFitWidth = true
         // Initialization code
     }
     var left = true

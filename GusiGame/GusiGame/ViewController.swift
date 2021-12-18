@@ -79,6 +79,10 @@ class ViewController: UIViewController {
     private var originalCentersLeft: [CGPoint] = []// The original position of each card
     private var originalCentersRight: [CGPoint] = []// The original position of each card
     
+    private let lineSpacingForCollection = CGFloat(5)
+    private let insetsForCollection = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+    private let cellSize = CGSize(width: 65, height: 65)
+    
     private var leftSlot = "" //Indicates which card is in the left slot
     private var rightSlot = "" //Indicates which card is in the right slot
     
@@ -129,7 +133,7 @@ class ViewController: UIViewController {
     
     @objc private func handlePanGesture(gestureRecognizer: UIPanGestureRecognizer) {
         guard gestureRecognizer.view != nil else {return}
-        let piece = gestureRecognizer.view! as! SyllableCell
+        guard let piece = gestureRecognizer.view as? SyllableCell else { fatalError("Couldn't downcast piece")}
         switch gestureRecognizer.state {
         case .began:
             self.initialCenter = piece.center
@@ -144,27 +148,35 @@ class ViewController: UIViewController {
     
     private func handleEndOfGesture(piece: SyllableCell) {
         if slot.frame.contains(piece.center) && piece.left {
-            if leftSlot.count > 1 { // - FIXME: убрать литерал
-                leftSyllables.insert(leftSlot, at: leftSyllables.firstIndex(of: piece.syllableLabel.text!)!) // - FIXME: убрать force unwrapp
+            guard let syllable = piece.syllableLabel.text  else { fatalError("Couldn't unwrapp piece.syllableLabel.text") }
+            if !leftSlot.isEmpty {
+                guard let index = leftSyllables.firstIndex(of: syllable) else { fatalError("Couldn't find index of piece") }
+                leftSyllables.insert(leftSlot, at: index)
                 }
-            leftSlot = piece.syllableLabel.text! // - FIXME: убрать force unwrapp
-            leftSyllables.remove(at: leftSyllables.firstIndex(of: leftSlot)!) // - FIXME: убрать force unwrapp
+            leftSlot = syllable
+            guard let index = leftSyllables.firstIndex(of: leftSlot)  else { fatalError("Couldn't find index of leftSlot") }
+            leftSyllables.remove(at: index)
             leftSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
             slot.slotLabel.text = leftSlot
             slot.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         } else if slot2.frame.contains(convertRightCollectionCoordinates(coordinates: piece.center)) && !piece.left {
-            if rightSlot.count > 1 { // - FIXME: убрать литерал
-                rightSyllables.insert(rightSlot, at: rightSyllables.firstIndex(of: piece.syllableLabel.text!)!) // - FIXME: убрать force unwrapp
+            guard let syllable = piece.syllableLabel.text  else { fatalError("Couldn't unwrapp piece.syllableLabel.text") }
+            if !rightSlot.isEmpty{
+                guard let index = rightSyllables.firstIndex(of: syllable) else { fatalError("Couldn't find index of piece") }
+                rightSyllables.insert(rightSlot, at: index)
                 }
-            rightSlot = piece.syllableLabel.text! // - FIXME: убрать force unwrapp
-            rightSyllables.remove(at: rightSyllables.firstIndex(of: rightSlot)!) // - FIXME: убрать force unwrapp
+            rightSlot = syllable
+            guard let index = rightSyllables.firstIndex(of: rightSlot)  else { fatalError("Couldn't find index of leftSlot") }
+            rightSyllables.remove(at: index)
             rightSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
             slot2.slotLabel.text = rightSlot
             slot2.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         } else if piece.left {
-            piece.center = originalCentersLeft[leftSyllablesCollectionView.indexPath(for: piece)!.item] // - FIXME: убрать force unwrapp
+            guard let indexPath = leftSyllablesCollectionView.indexPath(for: piece) else { fatalError("Couldn't find indexPath for piece")}
+            piece.center = originalCentersLeft[indexPath.item]
         } else if !piece.left {
-            piece.center = originalCentersRight[rightSyllablesCollectionView.indexPath(for: piece)!.item] // - FIXME: убрать force unwrapp
+            guard let indexPath = rightSyllablesCollectionView.indexPath(for: piece) else { fatalError("Couldn't find indexPath for piece")}
+            piece.center = originalCentersRight[indexPath.item]
         }
     }
     
@@ -208,14 +220,13 @@ extension ViewController: UICollectionViewDelegate  {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
-        return CGFloat(5) // - FIXME: убрать литерал
+        return lineSpacingForCollection
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let insets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15) // - FIXME: убрать литерал
-        return insets
+        return insetsForCollection
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        return CGSize(width: 65, height: 65) // - FIXME: убрать литерал
+        return cellSize
     }
 }
 

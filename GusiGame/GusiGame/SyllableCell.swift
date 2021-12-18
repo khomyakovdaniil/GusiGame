@@ -21,7 +21,13 @@ class SyllableCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+<<<<<<< Updated upstream
         syllableLabel.adjustsFontSizeToFitWidth = true
+=======
+        contentView.layer.cornerRadius = 8
+        contentView.layer.borderWidth = 5
+        contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+>>>>>>> Stashed changes
         // Initialization code
     }
 }

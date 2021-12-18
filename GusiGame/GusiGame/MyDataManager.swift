@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+    // MARK: - Protocols
 
 protocol Word {
     var leftSyllable: String { get }

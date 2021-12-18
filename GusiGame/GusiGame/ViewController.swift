@@ -132,7 +132,6 @@ class ViewController: UIViewController {
     }
     
     @objc private func handlePanGesture(gestureRecognizer: UIPanGestureRecognizer) {
-        guard gestureRecognizer.view != nil else {return}
         guard let piece = gestureRecognizer.view as? SyllableCell else { fatalError("Couldn't downcast piece")}
         switch gestureRecognizer.state {
         case .began:
@@ -148,29 +147,11 @@ class ViewController: UIViewController {
     
     private func handleEndOfGesture(piece: SyllableCell) {
         if slot.frame.contains(piece.center) && piece.left {
-            guard let syllable = piece.syllableLabel.text  else { fatalError("Couldn't unwrapp piece.syllableLabel.text") }
-            if !leftSlot.isEmpty {
-                guard let index = leftSyllables.firstIndex(of: syllable) else { fatalError("Couldn't find index of piece") }
-                leftSyllables.insert(leftSlot, at: index)
-                }
-            leftSlot = syllable
-            guard let index = leftSyllables.firstIndex(of: leftSlot)  else { fatalError("Couldn't find index of leftSlot") }
-            leftSyllables.remove(at: index)
-            leftSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
-            slot.slotLabel.text = leftSlot
-            slot.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+            clearLeftSlot(piece: piece)
+            setCardInLeftSlot()
         } else if slot2.frame.contains(convertRightCollectionCoordinates(coordinates: piece.center)) && !piece.left {
-            guard let syllable = piece.syllableLabel.text  else { fatalError("Couldn't unwrapp piece.syllableLabel.text") }
-            if !rightSlot.isEmpty{
-                guard let index = rightSyllables.firstIndex(of: syllable) else { fatalError("Couldn't find index of piece") }
-                rightSyllables.insert(rightSlot, at: index)
-                }
-            rightSlot = syllable
-            guard let index = rightSyllables.firstIndex(of: rightSlot)  else { fatalError("Couldn't find index of leftSlot") }
-            rightSyllables.remove(at: index)
-            rightSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
-            slot2.slotLabel.text = rightSlot
-            slot2.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+            clearRightSlot(piece: piece)
+            setCardInRightSlot()
         } else if piece.left {
             guard let indexPath = leftSyllablesCollectionView.indexPath(for: piece) else { fatalError("Couldn't find indexPath for piece")}
             piece.center = originalCentersLeft[indexPath.item]
@@ -178,6 +159,40 @@ class ViewController: UIViewController {
             guard let indexPath = rightSyllablesCollectionView.indexPath(for: piece) else { fatalError("Couldn't find indexPath for piece")}
             piece.center = originalCentersRight[indexPath.item]
         }
+    }
+    
+    private func clearLeftSlot(piece: SyllableCell) {
+        guard let syllable = piece.syllableLabel.text else { fatalError("Couldn't unwrapp piece.syllableLabel.text") }
+        if !leftSlot.isEmpty {
+            guard let index = leftSyllables.firstIndex(of: syllable) else { fatalError("Couldn't find index of piece") }
+            leftSyllables.insert(leftSlot, at: index)
+        }
+        leftSlot = syllable
+    }
+    
+    private func setCardInLeftSlot() {
+        guard let index = leftSyllables.firstIndex(of: leftSlot)  else { fatalError("Couldn't find index of leftSlot") }
+        leftSyllables.remove(at: index)
+        leftSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
+        slot.slotLabel.text = leftSlot
+        slot.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+    }
+    
+    private func clearRightSlot(piece: SyllableCell) {
+        guard let syllable = piece.syllableLabel.text  else { fatalError("Couldn't unwrapp piece.syllableLabel.text") }
+        if !rightSlot.isEmpty{
+            guard let index = rightSyllables.firstIndex(of: syllable) else { fatalError("Couldn't find index of piece") }
+            rightSyllables.insert(rightSlot, at: index)
+        }
+        rightSlot = syllable
+    }
+    
+    private func setCardInRightSlot() {
+        guard let index = rightSyllables.firstIndex(of: rightSlot)  else { fatalError("Couldn't find index of leftSlot") }
+        rightSyllables.remove(at: index)
+        rightSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
+        slot2.slotLabel.text = rightSlot
+        slot2.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
     }
     
     private func convertRightCollectionCoordinates(coordinates: CGPoint) -> CGPoint {
@@ -189,11 +204,10 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.leftSyllablesCollectionView {
-        return leftSyllables.count
+            return leftSyllables.count
         } else {
             return rightSyllables.count
         }
-        
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.leftSyllablesCollectionView {

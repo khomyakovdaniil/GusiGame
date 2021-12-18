@@ -99,11 +99,12 @@ class ViewController: UIViewController {
     
     private func checkWord(leftSlot: String, rightSlot: String) {
         self.words.enumerated().forEach {(indexOfWord, word) in
-            checkCounter += 1
+            self.checkCounter += 1
             if self.leftSlot + self.rightSlot == word.fullWord {
-                checkCounter = 0
+                self.checkCounter += 1
                 self.resultImage.image = word.image
                 self.resultImage.isHidden = false
+                words.remove(at: indexOfWord)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self.resultImage.isHidden = true
                 }
@@ -118,7 +119,7 @@ class ViewController: UIViewController {
     }
     
     private func changeTitle(checkCounter: Int, meaning: String) {
-        if checkCounter > words.count {
+        if checkCounter == words.count {
             checkButton.setTitle("Неправильно", for: .normal)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.checkButton.setTitle("Проверить", for: .normal)

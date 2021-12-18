@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var slot: UIView!
     @IBOutlet weak var slot2: UIView!
+    @IBOutlet weak var slotLabel: UILabel!
+    @IBOutlet weak var slot2Label: UILabel!
     
     @IBOutlet weak var resultImage: UIImageView!
     
@@ -140,23 +142,21 @@ class ViewController: UIViewController {
     
     private func handleEndOfGesture(piece: SyllableCell) {
         if slot.frame.contains(piece.center) && piece.left {
-            leftSyllablesCollectionView.subviews.enumerated().forEach {(index, syllable) in
-                let syllable = syllable as? SyllableCell
-                if syllable?.syllableLabel.text == leftSlot {
-                    syllable?.center = originalCentersLeft[index]
+            if leftSlot.count > 1 {
+                    leftSyllables.append(leftSlot)
                 }
-            }
-            piece.center = slot.center
             leftSlot = piece.syllableLabel.text!
+            leftSyllables.remove(at: leftSyllables.firstIndex(of: leftSlot)!)
+            leftSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
+            slotLabel.text = leftSlot
         } else if slot2.frame.contains(convertRightCollectionCoordinates(coordinates: piece.center)) && !piece.left {
-            rightSyllablesCollectionView.subviews.enumerated().forEach {(index, syllable) in
-                let syllable = syllable as? SyllableCell
-                if syllable?.syllableLabel.text == rightSlot {
-                    syllable?.center = originalCentersRight[index]
+            if rightSlot.count > 1 {
+                    rightSyllables.append(rightSlot)
                 }
-            }
-            piece.center = CGPoint(x: slot2.center.x - rightSyllablesCollectionView.frame.origin.x, y: slot2.center.y)
             rightSlot = piece.syllableLabel.text!
+            rightSyllables.remove(at: rightSyllables.firstIndex(of: rightSlot)!)
+            rightSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
+            slot2Label.text = rightSlot
         } else if piece.left {
             piece.center = originalCentersLeft[leftSyllablesCollectionView.indexPath(for: piece)!.item]
         } else if !piece.left {

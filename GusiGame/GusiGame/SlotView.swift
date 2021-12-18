@@ -31,8 +31,8 @@ class SlotView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         slotLabel.text = ""
-        contentView.layer.cornerRadius = 8
-        contentView.layer.borderWidth = 5
-        contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.layer.cornerRadius = 8
+        self.layer.borderWidth = 5
+        self.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
 }

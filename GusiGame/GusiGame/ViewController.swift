@@ -105,6 +105,10 @@ class ViewController: UIViewController {
                 }
                 self.leftSlot = ""
                 self.rightSlot = ""
+                self.slot.slotLabel.text = ""
+                self.slot.contentView.backgroundColor = #colorLiteral(red: 0.2129294574, green: 0.3743387461, blue: 0.8922179937, alpha: 1)
+                self.slot2.slotLabel.text = ""
+                self.slot2.contentView.backgroundColor = #colorLiteral(red: 0.2129294574, green: 0.3743387461, blue: 0.8922179937, alpha: 1)
             }
         }
     }
@@ -147,6 +151,7 @@ class ViewController: UIViewController {
             leftSyllables.remove(at: leftSyllables.firstIndex(of: leftSlot)!)
             leftSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
             slot.slotLabel.text = leftSlot
+            slot.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         } else if slot2.frame.contains(convertRightCollectionCoordinates(coordinates: piece.center)) && !piece.left {
             if rightSlot.count > 1 {
                     rightSyllables.append(rightSlot)
@@ -155,6 +160,7 @@ class ViewController: UIViewController {
             rightSyllables.remove(at: rightSyllables.firstIndex(of: rightSlot)!)
             rightSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
             slot2.slotLabel.text = rightSlot
+            slot2.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         } else if piece.left {
             piece.center = originalCentersLeft[leftSyllablesCollectionView.indexPath(for: piece)!.item]
         } else if !piece.left {
@@ -202,14 +208,14 @@ extension ViewController: UICollectionViewDelegate  {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
-        return CGFloat(5)
+        return CGFloat(5) // - FIXME: убрать литерал
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let insets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        let insets = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15) // - FIXME: убрать литерал
         return insets
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        return CGSize(width: 65, height: 65)
+        return CGSize(width: 65, height: 65) // - FIXME: убрать литерал
     }
 }
 

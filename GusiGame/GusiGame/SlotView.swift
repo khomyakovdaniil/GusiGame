@@ -26,5 +26,6 @@ class SlotView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        slotLabel.text = ""
     }
 }

@@ -142,25 +142,25 @@ class ViewController: UIViewController {
     
     private func handleEndOfGesture(piece: SyllableCell) {
         if slot.frame.contains(piece.center) && piece.left {
-            if leftSlot.count > 1 {
-                    leftSyllables.append(leftSlot)
+            if leftSlot.count > 1 { // - FIXME: убрать литерал
+                leftSyllables.insert(leftSlot, at: leftSyllables.firstIndex(of: piece.syllableLabel.text!)!) // - FIXME: убрать force unwrapp
                 }
-            leftSlot = piece.syllableLabel.text!
-            leftSyllables.remove(at: leftSyllables.firstIndex(of: leftSlot)!)
+            leftSlot = piece.syllableLabel.text! // - FIXME: убрать force unwrapp
+            leftSyllables.remove(at: leftSyllables.firstIndex(of: leftSlot)!) // - FIXME: убрать force unwrapp
             leftSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
             slotLabel.text = leftSlot
         } else if slot2.frame.contains(convertRightCollectionCoordinates(coordinates: piece.center)) && !piece.left {
-            if rightSlot.count > 1 {
-                    rightSyllables.append(rightSlot)
+            if rightSlot.count > 1 { // - FIXME: убрать литерал
+                rightSyllables.insert(rightSlot, at: rightSyllables.firstIndex(of: piece.syllableLabel.text!)!) // - FIXME: убрать force unwrapp
                 }
-            rightSlot = piece.syllableLabel.text!
-            rightSyllables.remove(at: rightSyllables.firstIndex(of: rightSlot)!)
+            rightSlot = piece.syllableLabel.text! // - FIXME: убрать force unwrapp
+            rightSyllables.remove(at: rightSyllables.firstIndex(of: rightSlot)!) // - FIXME: убрать force unwrapp
             rightSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
             slot2Label.text = rightSlot
         } else if piece.left {
-            piece.center = originalCentersLeft[leftSyllablesCollectionView.indexPath(for: piece)!.item]
+            piece.center = originalCentersLeft[leftSyllablesCollectionView.indexPath(for: piece)!.item] // - FIXME: убрать force unwrapp
         } else if !piece.left {
-            piece.center = originalCentersRight[rightSyllablesCollectionView.indexPath(for: piece)!.item]
+            piece.center = originalCentersRight[rightSyllablesCollectionView.indexPath(for: piece)!.item] // - FIXME: убрать force unwrapp
         }
     }
     

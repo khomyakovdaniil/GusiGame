@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

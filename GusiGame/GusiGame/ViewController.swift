@@ -92,7 +92,7 @@ class ViewController: UIViewController {
     private lazy var leftSyllables: [String] = words.compactMap {$0.leftSyllable}
     private lazy var rightSyllables: [String] = words.shuffled().compactMap {$0.rightSyllable}
     
-    private var meaning: String = " "
+    private var meaning: String = ""
     private var checkCounter = 0
     
     // MARK: - Private functions

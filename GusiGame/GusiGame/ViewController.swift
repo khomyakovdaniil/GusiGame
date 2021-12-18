@@ -16,10 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var leftSyllablesCollectionView: UICollectionView!
     @IBOutlet weak var rightSyllablesCollectionView: UICollectionView!
     
-    @IBOutlet weak var slot: UIView!
-    @IBOutlet weak var slot2: UIView!
-    @IBOutlet weak var slotLabel: UILabel!
-    @IBOutlet weak var slot2Label: UILabel!
+    @IBOutlet weak var slot: SlotView!
+    @IBOutlet weak var slot2: SlotView!
     
     @IBOutlet weak var resultImage: UIImageView!
     
@@ -148,7 +146,7 @@ class ViewController: UIViewController {
             leftSlot = piece.syllableLabel.text!
             leftSyllables.remove(at: leftSyllables.firstIndex(of: leftSlot)!)
             leftSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
-            slotLabel.text = leftSlot
+            slot.slotLabel.text = leftSlot
         } else if slot2.frame.contains(convertRightCollectionCoordinates(coordinates: piece.center)) && !piece.left {
             if rightSlot.count > 1 {
                     rightSyllables.append(rightSlot)
@@ -156,7 +154,7 @@ class ViewController: UIViewController {
             rightSlot = piece.syllableLabel.text!
             rightSyllables.remove(at: rightSyllables.firstIndex(of: rightSlot)!)
             rightSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
-            slot2Label.text = rightSlot
+            slot2.slotLabel.text = rightSlot
         } else if piece.left {
             piece.center = originalCentersLeft[leftSyllablesCollectionView.indexPath(for: piece)!.item]
         } else if !piece.left {

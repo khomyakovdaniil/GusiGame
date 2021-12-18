@@ -17,6 +17,8 @@
 		5F8C3A96271D86B900DF07C4 /* MyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C3A95271D86B900DF07C4 /* MyDataManager.swift */; };
 		5F8C3AE2273992BB00DF07C4 /* WordWebStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C3AE1273992BB00DF07C4 /* WordWebStruct.swift */; };
 		5F8C3B04274E871500DF07C4 /* MyWebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C3B03274E871500DF07C4 /* MyWebRequest.swift */; };
+		5FF1F87C276DCE6200512A03 /* SlotView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F87B276DCE6200512A03 /* SlotView.xib */; };
+		5FF1F87E276DCFB100512A03 /* SlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1F87D276DCFB100512A03 /* SlotView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		5F8C3A95271D86B900DF07C4 /* MyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataManager.swift; sourceTree = "<group>"; };
 		5F8C3AE1273992BB00DF07C4 /* WordWebStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordWebStruct.swift; sourceTree = "<group>"; };
 		5F8C3B03274E871500DF07C4 /* MyWebRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWebRequest.swift; sourceTree = "<group>"; };
+		5FF1F87B276DCE6200512A03 /* SlotView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlotView.xib; sourceTree = "<group>"; };
+		5FF1F87D276DCFB100512A03 /* SlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 		5F2D839A270844B6007D6921 /* GusiGame */ = {
 			isa = PBXGroup;
 			children = (
+				5FF1F87D276DCFB100512A03 /* SlotView.swift */,
+				5FF1F87B276DCE6200512A03 /* SlotView.xib */,
 				5F6C46902752366E00EEDBA3 /* SyllableCell.swift */,
 				5F6C46912752366E00EEDBA3 /* SyllableCell.xib */,
 				5F8C3AE1273992BB00DF07C4 /* WordWebStruct.swift */,
@@ -136,6 +142,7 @@
 			files = (
 				5F2D83A5270844B7007D6921 /* Assets.xcassets in Resources */,
 				5F6C46932752366E00EEDBA3 /* SyllableCell.xib in Resources */,
+				5FF1F87C276DCE6200512A03 /* SlotView.xib in Resources */,
 				5F2D83A3270844B6007D6921 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +160,7 @@
 				5F8C3A96271D86B900DF07C4 /* MyDataManager.swift in Sources */,
 				5F2D839C270844B6007D6921 /* AppDelegate.swift in Sources */,
 				5F6C46922752366E00EEDBA3 /* SyllableCell.swift in Sources */,
+				5FF1F87E276DCFB100512A03 /* SlotView.swift in Sources */,
 				5F2D839E270844B6007D6921 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

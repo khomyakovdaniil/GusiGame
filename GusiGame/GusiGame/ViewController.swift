@@ -143,7 +143,7 @@ class ViewController: UIViewController {
     private func handleEndOfGesture(piece: SyllableCell) {
         if slot.frame.contains(piece.center) && piece.left {
             if leftSlot.count > 1 {
-                    leftSyllables.append(leftSlot)
+                leftSyllables.insert(leftSlot, at: leftSyllables.firstIndex(of: piece.syllableLabel.text!)!)
                 }
             leftSlot = piece.syllableLabel.text!
             leftSyllables.remove(at: leftSyllables.firstIndex(of: leftSlot)!)
@@ -151,7 +151,7 @@ class ViewController: UIViewController {
             slotLabel.text = leftSlot
         } else if slot2.frame.contains(convertRightCollectionCoordinates(coordinates: piece.center)) && !piece.left {
             if rightSlot.count > 1 {
-                    rightSyllables.append(rightSlot)
+                rightSyllables.insert(rightSlot, at: rightSyllables.firstIndex(of: piece.syllableLabel.text!)!)
                 }
             rightSlot = piece.syllableLabel.text!
             rightSyllables.remove(at: rightSyllables.firstIndex(of: rightSlot)!)

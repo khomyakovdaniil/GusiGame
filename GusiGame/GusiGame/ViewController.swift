@@ -110,9 +110,9 @@ class ViewController: UIViewController {
                 }
                 self.leftSlot = ""
                 self.rightSlot = ""
-                self.slot.slotLabel.text = ""
+                self.slot.title = ""
                 self.slot.contentView.backgroundColor = #colorLiteral(red: 0.2129294574, green: 0.3743387461, blue: 0.8922179937, alpha: 1)
-                self.slot2.slotLabel.text = ""
+                self.slot2.title = ""
                 self.slot2.contentView.backgroundColor = #colorLiteral(red: 0.2129294574, green: 0.3743387461, blue: 0.8922179937, alpha: 1)
             }
         }
@@ -167,6 +167,7 @@ class ViewController: UIViewController {
         if !leftSlot.isEmpty {
             guard let index = leftSyllables.firstIndex(of: syllable) else { fatalError("Couldn't find index of piece") }
             leftSyllables.insert(leftSlot, at: index)
+            leftSyllablesCollectionView.insertItems(at: [IndexPath(item: index, section: 0)])
         }
         leftSlot = syllable
     }
@@ -174,10 +175,8 @@ class ViewController: UIViewController {
     private func setCardInLeftSlot() {
         guard let index = leftSyllables.firstIndex(of: leftSlot)  else { fatalError("Couldn't find index of leftSlot") }
         leftSyllables.remove(at: index)
-        leftSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
-       // leftSyllablesCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
-        slot.slotLabel.text = leftSlot
-        slot.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        leftSyllablesCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+        slot.title = leftSlot
     }
     
     private func clearRightSlot(piece: SyllableCell) {
@@ -185,7 +184,7 @@ class ViewController: UIViewController {
         if !rightSlot.isEmpty{
             guard let index = rightSyllables.firstIndex(of: syllable) else { fatalError("Couldn't find index of piece") }
             rightSyllables.insert(rightSlot, at: index)
-            leftSyllablesCollectionView.insertItems(at: <#T##[IndexPath]#>)
+            rightSyllablesCollectionView.insertItems(at: [IndexPath(item: index, section: 0)])
         }
         rightSlot = syllable
     }
@@ -193,9 +192,8 @@ class ViewController: UIViewController {
     private func setCardInRightSlot() {
         guard let index = rightSyllables.firstIndex(of: rightSlot)  else { fatalError("Couldn't find index of leftSlot") }
         rightSyllables.remove(at: index)
-        rightSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
-        slot2.slotLabel.text = rightSlot
-        slot2.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        rightSyllablesCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+        slot2.title = rightSlot
     }
     
     private func convertRightCollectionCoordinates(coordinates: CGPoint) -> CGPoint {

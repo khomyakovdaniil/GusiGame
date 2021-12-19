@@ -8,15 +8,22 @@
 import UIKit
 
 class SyllableCell: UICollectionViewCell {
+    // MARK - Outlets
     @IBOutlet private var titleLabel: UILabel!
-    
-    var left: Bool = false
-    var title: String = String() {
-        didSet {
-            titleLabel.text = title
+
+    // MARK: - Public
+    var left: Bool = false //FIXME: - убрать
+    var title: String {
+        get {
+            return titleLabel.text!
+        }
+        set {
+            titleLabel.text = newValue
         }
     }
 
+
+    // MARK: - Override
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = 8
@@ -24,6 +31,8 @@ class SyllableCell: UICollectionViewCell {
         layer.borderWidth = 5
         backgroundColor = .green
     }
+
+    // MARK: - Private
 
     
 }

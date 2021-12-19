@@ -45,6 +45,20 @@ class MyDataManager : DataManager {
         let words = leftSyllables.enumerated().map { (index, element) in
             RussianWord(firstSyllable: element, secondSyllable: rightSyllables[index], image: images[index])
         }
+        
+        // FIXME: S
+        let bundle = Bundle.main
+        guard let path = bundle.path(forResource: "words", ofType: "json") else { return [] }
+        guard let content = try? String(contentsOfFile: path), let data = content.data(using: .utf8) else { return [] }
+        var jsonObjects: [JsonWord]?
+            jsonObjects = try? JSONDecoder().decode([JsonWord].self, from: data)
+        // FIXME: E
         return words
     }
+}
+
+struct JsonWord: Codable {
+    let leftSyllable: String
+    let rightSyllable: String
+    let picName: String
 }

@@ -10,12 +10,27 @@ import UIKit
 class SlotView: UIView {
     
     // MARK: - IBOutlets
-    
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var slotLabel: UILabel!
+    @IBOutlet private var slotLabel: UILabel!
+    
+    // MARK: - Public
+    var title: String = "" {
+        didSet {
+            slotLabel.text = title
+            updateView()
+        }
+    }
+    
+    // MARK: - Private
+    private func updateView() {
+        if title.isEmpty {
+            slotLabel.backgroundColor = #colorLiteral(red: 0.2129294574, green: 0.3743387461, blue: 0.8922179937, alpha: 1)
+        } else {
+            slotLabel.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        }
+    }
     
     // MARK: - Initializer
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()

@@ -110,9 +110,9 @@ class ViewController: UIViewController {
                 }
                 self.leftSlot = ""
                 self.rightSlot = ""
-                self.slot.slotLabel.text = ""
+                self.slot.title = ""
                 self.slot.contentView.backgroundColor = #colorLiteral(red: 0.2129294574, green: 0.3743387461, blue: 0.8922179937, alpha: 1)
-                self.slot2.slotLabel.text = ""
+                self.slot2.title = ""
                 self.slot2.contentView.backgroundColor = #colorLiteral(red: 0.2129294574, green: 0.3743387461, blue: 0.8922179937, alpha: 1)
             }
         }
@@ -163,10 +163,11 @@ class ViewController: UIViewController {
     }
     
     private func clearLeftSlot(piece: SyllableCell) {
-        guard let syllable = piece.syllableLabel.text else { fatalError("Couldn't unwrapp piece.syllableLabel.text") }
+        let syllable = piece.title
         if !leftSlot.isEmpty {
             guard let index = leftSyllables.firstIndex(of: syllable) else { fatalError("Couldn't find index of piece") }
             leftSyllables.insert(leftSlot, at: index)
+            leftSyllablesCollectionView.insertItems(at: [IndexPath(item: index, section: 0)])
         }
         leftSlot = syllable
     }
@@ -174,16 +175,16 @@ class ViewController: UIViewController {
     private func setCardInLeftSlot() {
         guard let index = leftSyllables.firstIndex(of: leftSlot)  else { fatalError("Couldn't find index of leftSlot") }
         leftSyllables.remove(at: index)
-        leftSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
-        slot.slotLabel.text = leftSlot
-        slot.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        leftSyllablesCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+        slot.title = leftSlot
     }
     
     private func clearRightSlot(piece: SyllableCell) {
-        guard let syllable = piece.syllableLabel.text  else { fatalError("Couldn't unwrapp piece.syllableLabel.text") }
+        let syllable = piece.title
         if !rightSlot.isEmpty{
             guard let index = rightSyllables.firstIndex(of: syllable) else { fatalError("Couldn't find index of piece") }
             rightSyllables.insert(rightSlot, at: index)
+            rightSyllablesCollectionView.insertItems(at: [IndexPath(item: index, section: 0)])
         }
         rightSlot = syllable
     }
@@ -191,9 +192,8 @@ class ViewController: UIViewController {
     private func setCardInRightSlot() {
         guard let index = rightSyllables.firstIndex(of: rightSlot)  else { fatalError("Couldn't find index of leftSlot") }
         rightSyllables.remove(at: index)
-        rightSyllablesCollectionView.reloadSections(IndexSet(integer: 0))
-        slot2.slotLabel.text = rightSlot
-        slot2.contentView.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        rightSyllablesCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+        slot2.title = rightSlot
     }
     
     private func convertRightCollectionCoordinates(coordinates: CGPoint) -> CGPoint {
@@ -212,14 +212,17 @@ extension ViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.leftSyllablesCollectionView {
-            guard let cell = leftSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
-            cell.syllableLabel.text = leftSyllables[indexPath.item]
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID,
+                                                                for: indexPath) as? SyllableCell else {
+                fatalError("Couldn't get cell for cellID")
+            }
+            cell.title = leftSyllables[indexPath.item]
             cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(gestureRecognizer:))))
             cell.left = true
             return cell
         } else {
             guard let cell = rightSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
-            cell.syllableLabel.text = rightSyllables[indexPath.item]
+            cell.title = rightSyllables[indexPath.item]
             cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(gestureRecognizer:))))
             cell.left = false
             return cell

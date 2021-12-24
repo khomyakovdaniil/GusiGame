@@ -119,6 +119,8 @@ class ViewController: UIViewController {
     private var meaning: String = ""
     private var checkCounter = 0
     
+    private var moveView: UIView?
+    
     // MARK: - Private functions
     
     private func checkWord(leftSlot: String, rightSlot: String) {
@@ -251,32 +253,37 @@ extension ViewController: UICollectionViewDropDelegate {
             guard let sourceData = coordinator.session.localDragSession?.localContext as? DragInfo else {fatalError("11")}
             let sourceCollection = sourceData.collection
             let sourceIndex = sourceData.indexPath
-            for (index, item) in coordinator.items.enumerated()
-            {
-                
-                let indexPath = IndexPath(row: destinationIndexPath.item + index, section: destinationIndexPath.section)
                 if collectionView === self.leftSlotView && sourceCollection === leftSyllablesCollectionView
                 {
                     leftSyllables.remove(at: sourceIndex.item)
                     if !leftSlot.isEmpty {
+                        UIView.animate(withDuration: 0.5, animations: {
+                            self.moveView = self.leftSlotView.copyView()
+                            self.view.addSubview(self.moveView!)
+                            self.moveView!.center = self.leftSyllablesCollectionView.cellForItem(at: sourceIndex)!.center
+                        }){_ in self.moveView?.removeFromSuperview()}
                         leftSyllables.insert(leftSlot, at: sourceIndex.item)
                         leftSyllablesCollectionView.reloadSections(IndexSet(arrayLiteral: 0))
                     }
                     leftSyllablesCollectionView.deleteItems(at: [sourceIndex])
-                    leftSlot = item.dragItem.localObject as! String
+                    leftSlot = coordinator.items[0].dragItem.localObject as! String
                 }
                 else if collectionView === self.rightSlotView && sourceCollection === rightSyllablesCollectionView
                 {
                     rightSyllables.remove(at: sourceIndex.item)
                     if !rightSlot.isEmpty {
+                        UIView.animate(withDuration: 0.5, animations: {
+                            self.moveView = self.rightSlotView.copyView()
+                            self.view.addSubview(self.moveView!)
+                            self.moveView!.center = CGPoint(x: self.rightSyllablesCollectionView.cellForItem(at: sourceIndex)!.center.x + self.rightSyllablesCollectionView.frame.origin.x , y: self.rightSyllablesCollectionView.cellForItem(at: sourceIndex)!.center.y)
+                        }){_ in self.moveView?.removeFromSuperview()}
                         rightSyllables.insert(rightSlot, at: sourceIndex.item)
                         rightSyllablesCollectionView.reloadSections(IndexSet(arrayLiteral: 0))
                     }
                     rightSyllablesCollectionView.deleteItems(at: [sourceIndex])
-                    rightSlot = item.dragItem.localObject as! String
+                    rightSlot = coordinator.items[0].dragItem.localObject as! String
                 }
-                indexPaths.append(indexPath)
-            }
+                indexPaths.append(destinationIndexPath)
             collectionView.insertItems(at: indexPaths)
         })
     }

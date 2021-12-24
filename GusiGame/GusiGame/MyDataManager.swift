@@ -41,7 +41,6 @@ class MyDataManager : DataManager {
     private let images: [UIImage] = [UIImage(named: "Gusi")!, UIImage(named: "Lisa")!, UIImage(named: "Nosok")!, UIImage(named: "Sanki")!, UIImage(named: "Sapog")!, UIImage(named: "Seno")!, UIImage(named: "Sinok")!, UIImage(named: "Sito")!, UIImage(named: "Sovi")!]
     
     func getList() -> [Word] {
-        
         let bundle = Bundle.main
         guard let path = bundle.path(forResource: "words", ofType: "json") else { return [] }
         guard let content = try? String(contentsOfFile: path), let data = content.data(using: .utf8) else { return [] }

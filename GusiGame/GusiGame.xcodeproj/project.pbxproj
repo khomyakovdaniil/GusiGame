@@ -20,6 +20,7 @@
 		5FF1F882276F2F5300512A03 /* SyllableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1F880276F2F5300512A03 /* SyllableCell.swift */; };
 		5FF1F883276F2F5300512A03 /* SyllableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F881276F2F5300512A03 /* SyllableCell.xib */; };
 		5FF1F886276F461B00512A03 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F885276F461B00512A03 /* words.json */; };
+		5FF1F88A2775EB8200512A03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F8892775EB8200512A03 /* LaunchScreen.storyboard */; };
 		5FF1F88C2775F2A200512A03 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1F88B2775F2A200512A03 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		5FF1F880276F2F5300512A03 /* SyllableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllableCell.swift; sourceTree = "<group>"; };
 		5FF1F881276F2F5300512A03 /* SyllableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyllableCell.xib; sourceTree = "<group>"; };
 		5FF1F885276F461B00512A03 /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
+		5FF1F8892775EB8200512A03 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5FF1F88B2775F2A200512A03 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 				5FF1F88B2775F2A200512A03 /* UIViewExtension.swift */,
 				5F2D839F270844B6007D6921 /* ViewController.swift */,
 				5F2D839D270844B6007D6921 /* SceneDelegate.swift */,
+				5FF1F8892775EB8200512A03 /* LaunchScreen.storyboard */,
 				5F2D83A1270844B6007D6921 /* Main.storyboard */,
 				5F2D83A4270844B7007D6921 /* Assets.xcassets */,
 			);
@@ -162,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FF1F88A2775EB8200512A03 /* LaunchScreen.storyboard in Resources */,
 				5F2D83A5270844B7007D6921 /* Assets.xcassets in Resources */,
 				5FF1F883276F2F5300512A03 /* SyllableCell.xib in Resources */,
 				5FF1F87C276DCE6200512A03 /* SlotView.xib in Resources */,

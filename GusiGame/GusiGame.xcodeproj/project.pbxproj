@@ -20,6 +20,7 @@
 		5FF1F882276F2F5300512A03 /* SyllableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1F880276F2F5300512A03 /* SyllableCell.swift */; };
 		5FF1F883276F2F5300512A03 /* SyllableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F881276F2F5300512A03 /* SyllableCell.xib */; };
 		5FF1F886276F461B00512A03 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F885276F461B00512A03 /* words.json */; };
+		5FF1F88C2775F2A200512A03 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1F88B2775F2A200512A03 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		5FF1F880276F2F5300512A03 /* SyllableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllableCell.swift; sourceTree = "<group>"; };
 		5FF1F881276F2F5300512A03 /* SyllableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyllableCell.xib; sourceTree = "<group>"; };
 		5FF1F885276F461B00512A03 /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
+		5FF1F88B2775F2A200512A03 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				5F8C3A95271D86B900DF07C4 /* MyDataManager.swift */,
 				5F8C3B03274E871500DF07C4 /* MyWebRequest.swift */,
 				5F2D839B270844B6007D6921 /* AppDelegate.swift */,
+				5FF1F88B2775F2A200512A03 /* UIViewExtension.swift */,
 				5F2D839F270844B6007D6921 /* ViewController.swift */,
 				5F2D839D270844B6007D6921 /* SceneDelegate.swift */,
 				5F2D83A1270844B6007D6921 /* Main.storyboard */,
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F2D83A0270844B6007D6921 /* ViewController.swift in Sources */,
+				5FF1F88C2775F2A200512A03 /* UIViewExtension.swift in Sources */,
 				5F8C3AE2273992BB00DF07C4 /* WordWebStruct.swift in Sources */,
 				5F8C3B04274E871500DF07C4 /* MyWebRequest.swift in Sources */,
 				5F8C3A96271D86B900DF07C4 /* MyDataManager.swift in Sources */,

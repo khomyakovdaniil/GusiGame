@@ -42,17 +42,16 @@ class MyDataManager : DataManager {
     
     func getList() -> [Word] {
         
-        let words = leftSyllables.enumerated().map { (index, element) in
-            RussianWord(firstSyllable: element, secondSyllable: rightSyllables[index], image: images[index])
-        }
-        
-        // FIXME: S
         let bundle = Bundle.main
         guard let path = bundle.path(forResource: "words", ofType: "json") else { return [] }
         guard let content = try? String(contentsOfFile: path), let data = content.data(using: .utf8) else { return [] }
-        var jsonObjects: [JsonWord]?
+        var jsonObjects: [JsonWord]!
             jsonObjects = try? JSONDecoder().decode([JsonWord].self, from: data)
-        // FIXME: E
+        
+        let words = jsonObjects.map {
+            RussianWord(firstSyllable: $0.leftSyllable, secondSyllable: $0.rightSyllable, image: UIImage(named: $0.picName)!)
+            
+        }
         return words
     }
 }

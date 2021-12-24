@@ -2,11 +2,46 @@
   {
     "leftSyllable": "гу",
     "rightSyllable": "си",
-    "picName": "gusi"
+    "picName": "Gusi"
   },
   {
     "leftSyllable": "ли",
     "rightSyllable": "са",
-    "picName": "lisa"
+    "picName": "Lisa"
+  },
+  {
+    "leftSyllable": "но",
+    "rightSyllable": "сок",
+    "picName": "Nosok"
+  },
+  {
+    "leftSyllable": "сан",
+    "rightSyllable": "ки",
+    "picName": "Sanki"
+  },
+  {
+    "leftSyllable": "сы",
+    "rightSyllable": "нок",
+    "picName": "Sinok"
+  },
+  {
+    "leftSyllable": "со",
+    "rightSyllable": "вы",
+    "picName": "Sovi"
+  },
+  {
+    "leftSyllable": "си",
+    "rightSyllable": "то",
+    "picName": "Sito"
+  },
+  {
+    "leftSyllable": "се",
+    "rightSyllable": "но",
+    "picName": "Seno"
+  },
+  {
+    "leftSyllable": "са",
+    "rightSyllable": "пог",
+    "picName": "Sapog"
   }
 ]

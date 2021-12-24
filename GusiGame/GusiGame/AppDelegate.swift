@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  GusiGame
+//  GusiGames
 //
 //  Created by  Даниил Хомяков on 02.10.2021.
 //

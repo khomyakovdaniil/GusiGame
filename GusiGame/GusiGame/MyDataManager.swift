@@ -44,7 +44,6 @@ class MyDataManager : DataManager {
         }
     
     func getList() -> [Word] {
-        
         let bundle = Bundle.main
         guard let path = bundle.path(forResource: "words", ofType: "json") else { return [] }
         guard let content = try? String(contentsOfFile: path), let data = content.data(using: .utf8) else { return [] }

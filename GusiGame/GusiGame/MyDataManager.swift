@@ -36,9 +36,12 @@ struct RussianWord: Word {
 
 class MyDataManager : DataManager {
     
-    private let leftSyllables: [String] = ["Гу", "Ли", "Но", "Сан", "Са", "Се", "Сы", "Си", "Со"]
-    private let rightSyllables: [String] = ["Си", "Са", "Сок", "Ки", "Пог", "Но", "Нок", "То", "Вы"]
-    private let images: [UIImage] = [UIImage(named: "Gusi")!, UIImage(named: "Lisa")!, UIImage(named: "Nosok")!, UIImage(named: "Sanki")!, UIImage(named: "Sapog")!, UIImage(named: "Seno")!, UIImage(named: "Sinok")!, UIImage(named: "Sito")!, UIImage(named: "Sovi")!]
+    func getImage (named name : String) -> UIImage?
+        {
+        let bundle = Bundle.main
+        guard let imgPath = bundle.path(forResource: name, ofType: "jpg") else { fatalError("122") }
+        return UIImage(contentsOfFile: imgPath)
+        }
     
     func getList() -> [Word] {
         
@@ -49,7 +52,7 @@ class MyDataManager : DataManager {
             jsonObjects = try? JSONDecoder().decode([JsonWord].self, from: data)
         
         let words = jsonObjects.map {
-            RussianWord(firstSyllable: $0.leftSyllable, secondSyllable: $0.rightSyllable, image: UIImage(named: $0.picName)!)
+            RussianWord(firstSyllable: $0.leftSyllable, secondSyllable: $0.rightSyllable, image: getImage(named: $0.picName)!)
             
         }
         return words

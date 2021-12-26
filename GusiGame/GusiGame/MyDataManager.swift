@@ -52,7 +52,6 @@ class MyDataManager : DataManager {
         
         let words = jsonObjects.map {
             RussianWord(firstSyllable: $0.leftSyllable, secondSyllable: $0.rightSyllable, image: getImage(named: $0.picName)!)
-            
         }
         return words
     }

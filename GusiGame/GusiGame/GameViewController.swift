@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GameViewController.swift
 //  GusiGame
 //
 //  Created by  Даниил Хомяков on 02.10.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GameViewController: UIViewController {
     
     // MARK: - IBOutlets
     
@@ -29,9 +29,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let bundle = Bundle.main
-        let cellNib = UINib(nibName: "SyllableCell", bundle: bundle)
+        let syllableCellNib = UINib(nibName: "SyllableCell", bundle: bundle)
+        let slotCellNib = UINib(nibName: "SlotCell", bundle: bundle)
         
-        leftSlotView.register(cellNib, forCellWithReuseIdentifier: cellID)
+        leftSlotView.register(slotCellNib, forCellWithReuseIdentifier: slotCellID)
         leftSlotView.dataSource = self
         leftSlotView.dragInteractionEnabled = true
         leftSlotView.dragDelegate = self
@@ -39,7 +40,7 @@ class ViewController: UIViewController {
         leftSlotView.delegate = self
         leftSlotView.clipsToBounds = false
         
-        rightSlotView.register(cellNib, forCellWithReuseIdentifier: cellID)
+        rightSlotView.register(slotCellNib, forCellWithReuseIdentifier: slotCellID)
         rightSlotView.dataSource = self
         rightSlotView.dragInteractionEnabled = true
         rightSlotView.dragDelegate = self
@@ -50,7 +51,7 @@ class ViewController: UIViewController {
         leftSyllablesCollectionView.dragInteractionEnabled = true
         leftSyllablesCollectionView.dragDelegate = self
         leftSyllablesCollectionView.dropDelegate = self
-        leftSyllablesCollectionView.register(cellNib, forCellWithReuseIdentifier: cellID)
+        leftSyllablesCollectionView.register(syllableCellNib, forCellWithReuseIdentifier: cellID)
         leftSyllablesCollectionView.dataSource = self
         leftSyllablesCollectionView.delegate = self
         leftSyllablesCollectionView.clipsToBounds = false
@@ -58,7 +59,7 @@ class ViewController: UIViewController {
         rightSyllablesCollectionView.dragInteractionEnabled = true
         rightSyllablesCollectionView.dragDelegate = self
         rightSyllablesCollectionView.dropDelegate = self
-        rightSyllablesCollectionView.register(cellNib, forCellWithReuseIdentifier: cellID)
+        rightSyllablesCollectionView.register(syllableCellNib, forCellWithReuseIdentifier: cellID)
         rightSyllablesCollectionView.dataSource = self
         rightSyllablesCollectionView.delegate = self
         rightSyllablesCollectionView.clipsToBounds = false
@@ -95,6 +96,7 @@ class ViewController: UIViewController {
     private let dataManager: DataManager = MyDataManager()
     private let webRequest: WebRequest = MyWebRequest()
     private let cellID = "SyllableCell"
+    private let slotCellID = "SlotCell"
     
     // MARK: - Private
     
@@ -157,7 +159,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension GameViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.leftSyllablesCollectionView {
             return leftSyllables.count
@@ -174,36 +176,32 @@ extension ViewController: UICollectionViewDataSource {
                 fatalError("Couldn't get cell for cellID")
             }
             cell.title = leftSyllables[indexPath.item]
-            //cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(gestureRecognizer:))))
             cell.left = true
             return cell
         } else if collectionView == self.rightSyllablesCollectionView {
             guard let cell = rightSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
             cell.title = rightSyllables[indexPath.item]
-            //cell.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(gestureRecognizer:))))
             cell.left = false
             return cell
         } else if collectionView == self.leftSlotView {
-            guard let cell = leftSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
+            guard let cell = leftSlotView.dequeueReusableCell(withReuseIdentifier: slotCellID, for: indexPath) as? SlotCell else { fatalError("Couldn't get cell for cellID") }
             cell.title = leftSlot
-            cell.left = true
             return cell
         } else {
-            guard let cell = rightSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
+            guard let cell = rightSlotView.dequeueReusableCell(withReuseIdentifier: slotCellID, for: indexPath) as? SlotCell else { fatalError("Couldn't get cell for cellID") }
             cell.title = rightSlot
-            cell.left = false
             return cell
         }
     }
 }
 
-extension ViewController: UICollectionViewDelegate  {
+extension GameViewController: UICollectionViewDelegate  {
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
         return true
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension GameViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
         if collectionView == leftSyllablesCollectionView || collectionView == rightSyllablesCollectionView {
             return lineSpacingForSyllablesCollections
@@ -224,15 +222,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ViewController: UICollectionViewDragDelegate {
-    private struct DragInfo {
-        var collection: UICollectionView
-        var indexPath: IndexPath
-        init(collection: UICollectionView, indexPath: IndexPath){
-        self.collection = collection
-            self.indexPath = indexPath
-        }
-    }
+extension GameViewController: UICollectionViewDragDelegate {
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let item = collectionView == leftSyllablesCollectionView ? leftSyllables[indexPath.item] : rightSyllables[indexPath.item]
@@ -241,50 +231,61 @@ extension ViewController: UICollectionViewDragDelegate {
         dragItem.localObject = item
         session.localContext = DragInfo(collection: collectionView, indexPath: indexPath)
         return [dragItem]
-        
     }
 }
 
-extension ViewController: UICollectionViewDropDelegate {
+extension GameViewController: UICollectionViewDropDelegate {
     private func copyItems(coordinator: UICollectionViewDropCoordinator, destinationIndexPath: IndexPath, collectionView: UICollectionView)
     {
+        guard let sourceData = coordinator.session.localDragSession?.localContext as? DragInfo else {fatalError("11")}
+        let sourceCollection = sourceData.collection
+        let sourceIndex = sourceData.indexPath
+        if collectionView === self.leftSlotView && sourceCollection === leftSyllablesCollectionView
+        {
+            if leftSlot.isEmpty {
+                leftSyllables.remove(at: sourceIndex.item)
+                leftSyllablesCollectionView.deleteItems(at: [sourceIndex])
+            } else {
+                let cell = leftSyllablesCollectionView.cellForItem(at: sourceIndex) as? SyllableCell
+                cell?.setVisibility(false)
+                let oldLeftSlot = leftSlot
+                UIView.animate(withDuration: 2, animations: {
+                    self.moveView = self.leftSlotView.copyView()
+                    self.view.addSubview(self.moveView!)
+                    self.moveView!.center = self.leftSyllablesCollectionView.cellForItem(at: sourceIndex)!.center
+                }){ [weak self] _ in
+                    guard let strongSelf = self else { return }
+                    strongSelf.moveView?.removeFromSuperview()
+                    strongSelf.leftSyllables[sourceIndex.item] = oldLeftSlot
+                    strongSelf.leftSyllablesCollectionView.reloadItems(at: [sourceIndex])
+                }
+            }
+            leftSlot = coordinator.items[0].dragItem.localObject as! String
+        }
+        else if collectionView === self.rightSlotView && sourceCollection === rightSyllablesCollectionView
+        {
+            if rightSlot.isEmpty {
+                rightSyllables.remove(at: sourceIndex.item)
+                rightSyllablesCollectionView.deleteItems(at: [sourceIndex])
+            } else {
+                let cell = rightSyllablesCollectionView.cellForItem(at: sourceIndex) as? SyllableCell
+                cell?.setVisibility(false)
+                let oldRightSlot = rightSlot
+                UIView.animate(withDuration: 2, animations: {
+                    self.moveView = self.rightSlotView.copyView()
+                    self.view.addSubview(self.moveView!)
+                    self.moveView!.center = CGPoint(x: self.rightSyllablesCollectionView.cellForItem(at: sourceIndex)!.center.x + self.rightSyllablesCollectionView.frame.origin.x , y: self.rightSyllablesCollectionView.cellForItem(at: sourceIndex)!.center.y)
+                }){[weak self] _ in
+                    guard let strongSelf = self else { return }
+                    strongSelf.moveView?.removeFromSuperview()
+                    strongSelf.rightSyllables[sourceIndex.item] = oldRightSlot
+                    strongSelf.rightSyllablesCollectionView.reloadItems(at: [sourceIndex])
+                }
+            }
+            rightSlot = coordinator.items[0].dragItem.localObject as! String
+        }
         collectionView.performBatchUpdates({
-            var indexPaths = [IndexPath]()
-            guard let sourceData = coordinator.session.localDragSession?.localContext as? DragInfo else {fatalError("11")}
-            let sourceCollection = sourceData.collection
-            let sourceIndex = sourceData.indexPath
-                if collectionView === self.leftSlotView && sourceCollection === leftSyllablesCollectionView
-                {
-                    leftSyllables.remove(at: sourceIndex.item)
-                    if !leftSlot.isEmpty {
-                        UIView.animate(withDuration: 0.5, animations: {
-                            self.moveView = self.leftSlotView.copyView()
-                            self.view.addSubview(self.moveView!)
-                            self.moveView!.center = self.leftSyllablesCollectionView.cellForItem(at: sourceIndex)!.center
-                        }){_ in self.moveView?.removeFromSuperview()}
-                        leftSyllables.insert(leftSlot, at: sourceIndex.item)
-                        leftSyllablesCollectionView.reloadSections(IndexSet(arrayLiteral: 0))
-                    }
-                    leftSyllablesCollectionView.deleteItems(at: [sourceIndex])
-                    leftSlot = coordinator.items[0].dragItem.localObject as! String
-                }
-                else if collectionView === self.rightSlotView && sourceCollection === rightSyllablesCollectionView
-                {
-                    rightSyllables.remove(at: sourceIndex.item)
-                    if !rightSlot.isEmpty {
-                        UIView.animate(withDuration: 0.5, animations: {
-                            self.moveView = self.rightSlotView.copyView()
-                            self.view.addSubview(self.moveView!)
-                            self.moveView!.center = CGPoint(x: self.rightSyllablesCollectionView.cellForItem(at: sourceIndex)!.center.x + self.rightSyllablesCollectionView.frame.origin.x , y: self.rightSyllablesCollectionView.cellForItem(at: sourceIndex)!.center.y)
-                        }){_ in self.moveView?.removeFromSuperview()}
-                        rightSyllables.insert(rightSlot, at: sourceIndex.item)
-                        rightSyllablesCollectionView.reloadSections(IndexSet(arrayLiteral: 0))
-                    }
-                    rightSyllablesCollectionView.deleteItems(at: [sourceIndex])
-                    rightSlot = coordinator.items[0].dragItem.localObject as! String
-                }
-                indexPaths.append(destinationIndexPath)
-            collectionView.insertItems(at: indexPaths)
+            collectionView.reloadItems(at: [IndexPath(item: 0, section: 0)])
         })
     }
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {

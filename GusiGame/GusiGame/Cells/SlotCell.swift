@@ -1,18 +1,18 @@
 //
-//  SyllableCell.swift
+//  SlotCell.swift
 //  GusiGame
 //
-//  Created by  Даниил Хомяков on 19.12.2021.
+//  Created by  Даниил Хомяков on 26.12.2021.
 //
 
 import UIKit
 
-class SyllableCell: UICollectionViewCell {
+class SlotCell: UICollectionViewCell {
+
     // MARK - Outlets
     @IBOutlet private var titleLabel: UILabel!
 
     // MARK: - Public
-    var left: Bool = false //FIXME: - убрать
     var title: String {
         get {
             return titleLabel.text!
@@ -20,10 +20,6 @@ class SyllableCell: UICollectionViewCell {
         set {
             titleLabel.text = newValue
         }
-    }
-    
-    func setVisibility(_ visibility: Bool ) {
-        contentView.isHidden = !visibility
     }
 
 
@@ -36,8 +32,4 @@ class SyllableCell: UICollectionViewCell {
         contentView.backgroundColor = .green
         backgroundColor = .clear
     }
-
-    // MARK: - Private
-
-    
 }

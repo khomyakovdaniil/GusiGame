@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5F2D839C270844B6007D6921 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D839B270844B6007D6921 /* AppDelegate.swift */; };
 		5F2D839E270844B6007D6921 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D839D270844B6007D6921 /* SceneDelegate.swift */; };
-		5F2D83A0270844B6007D6921 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D839F270844B6007D6921 /* ViewController.swift */; };
+		5F2D83A0270844B6007D6921 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2D839F270844B6007D6921 /* GameViewController.swift */; };
 		5F2D83A3270844B6007D6921 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D83A1270844B6007D6921 /* Main.storyboard */; };
 		5F2D83A5270844B7007D6921 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F2D83A4270844B7007D6921 /* Assets.xcassets */; };
 		5F8C3A96271D86B900DF07C4 /* MyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C3A95271D86B900DF07C4 /* MyDataManager.swift */; };
@@ -20,7 +20,6 @@
 		5FF1F882276F2F5300512A03 /* SyllableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1F880276F2F5300512A03 /* SyllableCell.swift */; };
 		5FF1F883276F2F5300512A03 /* SyllableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F881276F2F5300512A03 /* SyllableCell.xib */; };
 		5FF1F886276F461B00512A03 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F885276F461B00512A03 /* words.json */; };
-
 		5FF1F88A2775EB8200512A03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F8892775EB8200512A03 /* LaunchScreen.storyboard */; };
 		5FF1F88C2775F2A200512A03 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1F88B2775F2A200512A03 /* UIViewExtension.swift */; };
 		5FF1F8962776F29900512A03 /* Gusi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F88D2776F29800512A03 /* Gusi.jpg */; };
@@ -32,15 +31,16 @@
 		5FF1F89C2776F29900512A03 /* Lisa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F8932776F29900512A03 /* Lisa.jpg */; };
 		5FF1F89D2776F29900512A03 /* Sapog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F8942776F29900512A03 /* Sapog.jpg */; };
 		5FF1F89E2776F29900512A03 /* Nosok.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F8952776F29900512A03 /* Nosok.jpg */; };
-		5FF1F88A2775EB8200512A03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F8892775EB8200512A03 /* LaunchScreen.storyboard */; };
-		5FF1F88C2775F2A200512A03 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1F88B2775F2A200512A03 /* UIViewExtension.swift */; };
+		5FF1F8A02776F80E00512A03 /* DragInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1F89F2776F80E00512A03 /* DragInfo.swift */; };
+		5FF1F8A32778549E00512A03 /* SlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF1F8A12778549E00512A03 /* SlotCell.swift */; };
+		5FF1F8A42778549E00512A03 /* SlotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FF1F8A22778549E00512A03 /* SlotCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5F2D8398270844B6007D6921 /* GusiGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GusiGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F2D839B270844B6007D6921 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F2D839D270844B6007D6921 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5F2D839F270844B6007D6921 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		5F2D839F270844B6007D6921 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		5F2D83A2270844B6007D6921 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5F2D83A4270844B7007D6921 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F8C3A95271D86B900DF07C4 /* MyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataManager.swift; sourceTree = "<group>"; };
@@ -62,8 +62,9 @@
 		5FF1F8932776F29900512A03 /* Lisa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Lisa.jpg; sourceTree = "<group>"; };
 		5FF1F8942776F29900512A03 /* Sapog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sapog.jpg; sourceTree = "<group>"; };
 		5FF1F8952776F29900512A03 /* Nosok.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Nosok.jpg; sourceTree = "<group>"; };
-		5FF1F8892775EB8200512A03 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5FF1F88B2775F2A200512A03 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		5FF1F89F2776F80E00512A03 /* DragInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragInfo.swift; sourceTree = "<group>"; };
+		5FF1F8A12778549E00512A03 /* SlotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotCell.swift; sourceTree = "<group>"; };
+		5FF1F8A22778549E00512A03 /* SlotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlotCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +100,14 @@
 				5FF1F884276F44C300512A03 /* Resources */,
 				5FF1F87F276F2F2800512A03 /* Cells */,
 				5FF1F87D276DCFB100512A03 /* SlotView.swift */,
+				5FF1F89F2776F80E00512A03 /* DragInfo.swift */,
 				5FF1F87B276DCE6200512A03 /* SlotView.xib */,
 				5F8C3AE1273992BB00DF07C4 /* WordWebStruct.swift */,
 				5F8C3A95271D86B900DF07C4 /* MyDataManager.swift */,
 				5F8C3B03274E871500DF07C4 /* MyWebRequest.swift */,
 				5F2D839B270844B6007D6921 /* AppDelegate.swift */,
 				5FF1F88B2775F2A200512A03 /* UIViewExtension.swift */,
-				5F2D839F270844B6007D6921 /* ViewController.swift */,
+				5F2D839F270844B6007D6921 /* GameViewController.swift */,
 				5F2D839D270844B6007D6921 /* SceneDelegate.swift */,
 				5FF1F8892775EB8200512A03 /* LaunchScreen.storyboard */,
 				5F2D83A1270844B6007D6921 /* Main.storyboard */,
@@ -117,6 +119,8 @@
 		5FF1F87F276F2F2800512A03 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5FF1F8A12778549E00512A03 /* SlotCell.swift */,
+				5FF1F8A22778549E00512A03 /* SlotCell.xib */,
 				5FF1F880276F2F5300512A03 /* SyllableCell.swift */,
 				5FF1F881276F2F5300512A03 /* SyllableCell.xib */,
 			);
@@ -212,6 +216,7 @@
 				5FF1F89A2776F29900512A03 /* Sovi.jpg in Resources */,
 				5FF1F89E2776F29900512A03 /* Nosok.jpg in Resources */,
 				5FF1F8982776F29900512A03 /* Sinok.jpg in Resources */,
+				5FF1F8A42778549E00512A03 /* SlotCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,11 +227,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F2D83A0270844B6007D6921 /* ViewController.swift in Sources */,
+				5F2D83A0270844B6007D6921 /* GameViewController.swift in Sources */,
+				5FF1F8A02776F80E00512A03 /* DragInfo.swift in Sources */,
 				5FF1F88C2775F2A200512A03 /* UIViewExtension.swift in Sources */,
 				5F8C3AE2273992BB00DF07C4 /* WordWebStruct.swift in Sources */,
 				5F8C3B04274E871500DF07C4 /* MyWebRequest.swift in Sources */,
 				5F8C3A96271D86B900DF07C4 /* MyDataManager.swift in Sources */,
+				5FF1F8A32778549E00512A03 /* SlotCell.swift in Sources */,
 				5F2D839C270844B6007D6921 /* AppDelegate.swift in Sources */,
 				5FF1F882276F2F5300512A03 /* SyllableCell.swift in Sources */,
 				5FF1F87E276DCFB100512A03 /* SlotView.swift in Sources */,

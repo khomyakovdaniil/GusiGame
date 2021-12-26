@@ -16,16 +16,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4H-LU-ymm">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="v4H-LU-ymm">
+                        <rect key="frame" x="5" y="15" width="40" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="v4H-LU-ymm" secondAttribute="height" multiplier="2:1" id="e3F-Br-qfR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="100"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="v4H-LU-ymm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="dJX-W3-Sbp"/>
+                <constraint firstItem="v4H-LU-ymm" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="h2a-47-n6x"/>
+                <constraint firstAttribute="trailing" secondItem="v4H-LU-ymm" secondAttribute="trailing" constant="5" id="nng-W7-eDR"/>
+            </constraints>
             <connections>
                 <outlet property="titleLabel" destination="v4H-LU-ymm" id="X0F-Ue-fcA"/>
             </connections>

@@ -121,7 +121,7 @@ class GameViewController: UIViewController {
     private var meaning: String = ""
     private var checkCounter = 0
     
-    private var moveView: UIView?
+    private var moveView: AnimationView?
     
     // MARK: - Private functions
     
@@ -176,12 +176,10 @@ extension GameViewController: UICollectionViewDataSource {
                 fatalError("Couldn't get cell for cellID")
             }
             cell.title = leftSyllables[indexPath.item]
-            cell.left = true
             return cell
         } else if collectionView == self.rightSyllablesCollectionView {
             guard let cell = rightSyllablesCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? SyllableCell else { fatalError("Couldn't get cell for cellID") }
             cell.title = rightSyllables[indexPath.item]
-            cell.left = false
             return cell
         } else if collectionView == self.leftSlotView {
             guard let cell = leftSlotView.dequeueReusableCell(withReuseIdentifier: slotCellID, for: indexPath) as? SlotCell else { fatalError("Couldn't get cell for cellID") }
@@ -249,20 +247,22 @@ extension GameViewController: UICollectionViewDropDelegate {
                 let cell = leftSyllablesCollectionView.cellForItem(at: sourceIndex) as? SyllableCell
                 cell?.setVisibility(false)
                 let oldLeftSlot = leftSlot
-                UIView.animate(withDuration: 2, animations: {
-                    self.moveView = self.leftSlotView.copyView()
-                    self.view.addSubview(self.moveView!)
-                    self.moveView!.center = self.leftSyllablesCollectionView.cellForItem(at: sourceIndex)!.center
+                cell?.title = oldLeftSlot
+                self.moveView = AnimationView(frame: CGRect(x: self.leftSlotView.frame.minX, y: self.leftSlotView.frame.minY, width: cellSize.width, height: cellSize.height))
+                self.moveView?.title = oldLeftSlot
+                self.view.addSubview(self.moveView!)
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.moveView?.center = self.leftSyllablesCollectionView.cellForItem(at: sourceIndex)!.center
                 }){ [weak self] _ in
                     guard let strongSelf = self else { return }
-                    strongSelf.moveView?.removeFromSuperview()
                     strongSelf.leftSyllables[sourceIndex.item] = oldLeftSlot
                     strongSelf.leftSyllablesCollectionView.reloadItems(at: [sourceIndex])
+                    strongSelf.moveView?.removeFromSuperview()
+                    cell?.setVisibility(true)
                 }
             }
             leftSlot = coordinator.items[0].dragItem.localObject as! String
-        }
-        else if collectionView === self.rightSlotView && sourceCollection === rightSyllablesCollectionView
+        } else if collectionView === self.rightSlotView && sourceCollection === rightSyllablesCollectionView
         {
             if rightSlot.isEmpty {
                 rightSyllables.remove(at: sourceIndex.item)
@@ -271,15 +271,18 @@ extension GameViewController: UICollectionViewDropDelegate {
                 let cell = rightSyllablesCollectionView.cellForItem(at: sourceIndex) as? SyllableCell
                 cell?.setVisibility(false)
                 let oldRightSlot = rightSlot
-                UIView.animate(withDuration: 2, animations: {
-                    self.moveView = self.rightSlotView.copyView()
-                    self.view.addSubview(self.moveView!)
+                cell?.title = oldRightSlot
+                self.moveView = AnimationView(frame: CGRect(x: self.rightSlotView.frame.minX, y: self.rightSlotView.frame.minY, width: cellSize.width, height: cellSize.height))
+                self.moveView?.title = oldRightSlot
+                self.view.addSubview(self.moveView!)
+                UIView.animate(withDuration: 0.5, animations: {
                     self.moveView!.center = CGPoint(x: self.rightSyllablesCollectionView.cellForItem(at: sourceIndex)!.center.x + self.rightSyllablesCollectionView.frame.origin.x , y: self.rightSyllablesCollectionView.cellForItem(at: sourceIndex)!.center.y)
                 }){[weak self] _ in
                     guard let strongSelf = self else { return }
                     strongSelf.moveView?.removeFromSuperview()
                     strongSelf.rightSyllables[sourceIndex.item] = oldRightSlot
                     strongSelf.rightSyllablesCollectionView.reloadItems(at: [sourceIndex])
+                    cell?.setVisibility(true)
                 }
             }
             rightSlot = coordinator.items[0].dragItem.localObject as! String

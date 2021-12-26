@@ -12,7 +12,6 @@ class SyllableCell: UICollectionViewCell {
     @IBOutlet private var titleLabel: UILabel!
 
     // MARK: - Public
-    var left: Bool = false //FIXME: - убрать
     var title: String {
         get {
             return titleLabel.text!
